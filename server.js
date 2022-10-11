@@ -8,6 +8,7 @@ const { connect } = require('http2');
 
 
 const db = mysql.createConnection({
+	port     : 7863,
 	host     : 'containers-us-west-100.railway.app',
 	user     : 'root',
 	password : '5c24Dfcr42wYngE6mG8p',
