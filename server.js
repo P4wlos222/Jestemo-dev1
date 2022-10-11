@@ -54,7 +54,7 @@ app.get('/login', function (req, res) {
 
 app.post('/auth', function (req, res) {
     console.log(req.body.user,req.body.passwd);
-    console.log(connection.query("SELECT * FROM Users"))
+    //console.log(connection.query("SELECT * FROM Users"))
     return res.redirect("/")
 });
 
