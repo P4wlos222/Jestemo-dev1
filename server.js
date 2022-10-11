@@ -1,4 +1,5 @@
 const fs = require('fs');
+const bodyParser = require("body-parser");
 const session = require('express-session');
 const express = require('express');
 const app = express();
@@ -13,13 +14,13 @@ app.use(session({
 
 app.use(express.json());
 
-var bodyParser = require("body-parser");
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
-    fs.readFile("index.html", function(err, data){
+    fs.readFile(__dirname + "/index.html", function(err, data){
         if (err) {
           res.writeHead(404, {'Content-Type': 'text/html'});
           return res.end("404 Not Found");
@@ -31,7 +32,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/login', function (req, res) {
-    fs.readFile("login.html", function(err, data){
+    fs.readFile(__dirname + "login.html", function(err, data){
         if (err) {
           res.writeHead(404, {'Content-Type': 'text/html'});
           return res.end("404 Not Found");

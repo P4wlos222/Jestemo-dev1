@@ -10,7 +10,7 @@
   "author": "Aiden Bai",
   "license": "MIT",
   "scripts": {
-    "start": "node server.mjs"
+    "start": "node server.js"
   }
   
 }
