@@ -75,7 +75,7 @@ app.post('/auth', function(req, res) {
 		});
 	} else {
 		res.send('Please enter Username and Password!');
-		resp.end();
+		res.end();
 	}
 });
 
