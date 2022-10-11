@@ -59,10 +59,10 @@ app.get('/login', function (req, res) {
 });*/
 
 app.post('/auth', function(req, res) {
-	let username = req.body.username;
+	let user = req.body.user;
 	let password = req.body.passwd;
-	if (username && password) {
-		connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, res, fields) {
+	if (user && password) {
+		connection.query('SELECT * FROM accounts WHERE Email = ? OR Phone = ? AND password = ?', [user,user, password], function(error, res, fields) {
 			if (error) throw error;
 			if (res.length > 0) {
 				req.session.loggedin = true;
