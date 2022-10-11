@@ -4,6 +4,15 @@ const session = require('express-session');
 const express = require('express');
 const app = express();
 const mysql = require('mysql');
+const { connect } = require('http2');
+
+
+const connection = mysql.createConnection({
+	host     : 'containers-us-west-100.railway.app',
+	user     : 'root',
+	password : '5c24Dfcr42wYngE6mG8p',
+	database : 'railway'
+});
 
 
 app.use(session({
@@ -45,6 +54,7 @@ app.get('/login', function (req, res) {
 
 app.post('/auth', function (req, res) {
     console.log(req.body.user,req.body.passwd);
+    console.log(connection.query("SELECT BIN_TO_UUID(UUID) FROM Users"))
     return res.redirect("/")
 });
 
