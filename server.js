@@ -7,11 +7,18 @@ const mysql = require('mysql');
 const { connect } = require('http2');
 
 
-const connection = mysql.createConnection({
+const db = mysql.createConnection({
 	host     : 'containers-us-west-100.railway.app',
 	user     : 'root',
 	password : '5c24Dfcr42wYngE6mG8p',
 	database : 'railway'
+});
+
+db.connect((err) => {
+	if (err){
+		throw err;
+	}
+	console.log("DB Connection established!")
 });
 
 
@@ -62,7 +69,7 @@ app.post('/auth', function(req, res) {
 	let user = req.body.user;
 	let password = req.body.passwd;
 	if (user && password) {
-		connection.query('SELECT * FROM accounts WHERE Email = ? AND password = ?', [user,password], function(error, res, fields) {
+		db.query('SELECT * FROM accounts WHERE Email = ? AND password = ?', [user,password], function(error, res, fields) {
 			if (error) throw error;
 			if (res.length > 0) {
 				req.session.loggedin = true;
