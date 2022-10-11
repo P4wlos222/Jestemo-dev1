@@ -1,0 +1,49 @@
+body
+{
+    margin: 0;
+}
+#holder
+{
+    width: 100vw;
+    margin: auto;
+}
+#header
+{
+    width: auto;
+    height: 50px;
+    background-color: #666;
+}
+#homebutton
+{
+    float: left;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+#logo
+{   
+    height: 100%;
+    width: calc(100% - 150px);
+    float: left;
+    text-align: center;
+    line-height: 50px;
+    color:#fff;
+    font-size: 44px;
+    font-weight: bolder;
+    
+}
+#navbar
+{
+    width: auto;
+    height: 50px;
+    background-color: #444;
+}
+#loginbutton
+{
+    float: left;
+    height: 50px;
+    width: 100px;
+    text-align: center;
+    line-height: 50px;
+}
