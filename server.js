@@ -62,7 +62,7 @@ app.post('/auth', function(req, res) {
 	let user = req.body.user;
 	let password = req.body.passwd;
 	if (user && password) {
-		connection.query('SELECT * FROM accounts WHERE Email = ? OR Phone = ? AND password = ?', [user,user,password], function(error, res, fields) {
+		connection.query('SELECT * FROM accounts WHERE Email = ? AND password = ?', [user,password], function(error, res, fields) {
 			if (error) throw error;
 			if (res.length > 0) {
 				req.session.loggedin = true;
