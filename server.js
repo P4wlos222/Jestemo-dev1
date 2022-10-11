@@ -52,10 +52,31 @@ app.get('/login', function (req, res) {
     })
 })
 
-app.post('/auth', function (req, res) {
+/*app.post('/auth', function (req, res) {
     console.log(req.body.user,req.body.passwd);
     //console.log(connection.query("SELECT * FROM Users"))
     return res.redirect("/")
+});*/
+
+app.post('/auth', function(req, res) {
+	let username = req.body.username;
+	let password = req.body.passwd;
+	if (username && password) {
+		connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
+			if (error) throw error;
+			if (results.length > 0) {
+				request.session.loggedin = true;
+				request.session.username = username;
+				response.redirect('/');
+			} else {
+				response.send('Incorrect Username and/or Password!');
+			}			
+			response.end();
+		});
+	} else {
+		response.send('Please enter Username and Password!');
+		response.end();
+	}
 });
 
 var server = app.listen(process.env.PORT, function () {
