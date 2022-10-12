@@ -11,7 +11,6 @@ function DbAppend(data){
         if (err) throw err;
     });
 
-    console.log(typeof hashedPassword, hashedPassword);
     db.query('INSERT INTO Users(UUID,Email,Phone,Password,FirstName,LastName,DisplayName) VALUES (UUID_TO_BIN(UUID()),?,?,?,?,?,?)',
     [data.Email,data.Phone,hashedPassword,data.FirstName,data.LastName,data.DisplayName],
     function(error){
