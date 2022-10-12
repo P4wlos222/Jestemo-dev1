@@ -28,6 +28,7 @@ function DbAppend(data){
     function(error){
         if (error) throw error;
     });
+    return true;
 }
 
 module.exports = DbAppend;
