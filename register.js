@@ -9,7 +9,7 @@ bcrypt.hash(passwd, saltRounds, function(err, hash) {
 
 
 function DbAppend(data){
-    let salt = bcrypt.getSaltSync(saltRounds, function(err,hash){
+    let salt = bcrypt.genSaltSync(saltRounds, function(err,hash){
         if (err) throw err;
     });
     let hashedPassword = bcrypt.hashSync(data.Password, salt, function(err,hash){
