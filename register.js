@@ -10,7 +10,7 @@ function hash(string){
 
 function DbAppend(data){
     hashedPasswd = hash(data.Password);
-    db.query('INSERT INTO Users(UUID,Email,Phone,Password,FirstName,LastName,DisplayName) VALUES (UUID(),?,?,?,?,?,?)',
+    db.query('INSERT INTO Users(UUID,Email,Phone,Password,FirstName,LastName,DisplayName) VALUES (UUID_TO_BIN(UUID()),?,?,?,?,?,?)',
     [data.Email,data.Phone,hashedPasswd,data.FirstName,data.LastName,data.DisplayName],
     function(error){
         if (error) throw error;
