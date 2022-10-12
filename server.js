@@ -7,13 +7,15 @@ const mysql = require('mysql');
 const { connect } = require('http2');
 
 
-const db = mysql.createConnection({
-	port     : 7863,
+const dbn = mysql.createConnection({
 	host     : 'containers-us-west-100.railway.app',
 	user     : 'root',
 	password : '5c24Dfcr42wYngE6mG8p',
+	port     : 7863,
 	database : 'railway'
-});
+}); process.env.mysql.host
+
+const db= mysql.createConnection('mysql://${{ MYSQLUSER }}:${{ MYSQLPASSWORD }}@${{ MYSQLHOST }}:${{ MYSQLPORT }}/${{ MYSQLDATABASE }}')
 
 db.connect((err) => {
 	if (err){
