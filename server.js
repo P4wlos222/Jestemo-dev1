@@ -60,23 +60,25 @@ app.post('/auth', function(req, res) {
     bcrypt.hash(password, saltRounds, function(err, hash) {
         console.log(hash)
     });
-	if (user && password) {
-		db.query('SELECT * FROM Users WHERE Email = ? AND password = ?', [user,password], function(error, results, fields) {
-			if (error) throw error;
-			if (results.length > 0) {
-				req.session.loggedin = true;
-				req.session.username = user;
-				res.redirect('/');
-			} else {
-				res.send('Incorrect Username and/or Password!');
-			}			
-			res.end();
-		});
-	} else {
-		res.send('Please enter Username and Password!');
-		res.end();
-	}
+
+    if (user && password) {
+        db.query('SELECT Password FROM Users WHERE Email = ?',[user],function(error, retrievedHash, fields) {
+            if (error) throw error;
+            if (retrievedHash) {
+                bcrypt.compare(password, retrievedHash, function(err, result) {
+                    req.session.loggedin = true;
+				    req.session.username = user;
+				    res.redirect('/');
+                });
+            } else {
+                res.send('Incorrect Username and/or Password!');
+            }
+            res.end();
+        });
+        retrievedHash = db.query('SELECT Password FROM Users WHERE Email = ?',[user])
+    }
 });
+
 
 var server = app.listen(process.env.PORT, function () {
     console.log('Node server is running..');
