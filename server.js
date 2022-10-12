@@ -3,8 +3,8 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const express = require('express');
 const app = express();
-//const db = require(__dirname + "/dbconnect.js");
 const auth = require(__dirname + "/auth.js");
+const register = require(__dirname + "/register.js");
 //process.env.PORT = 8080;
 
 app.use(session({
@@ -44,11 +44,17 @@ app.get('/login', function (req, res) {
     })
 })
 
-/*app.post('/auth', function (req, res) {
-    console.log(req.body.user,req.body.passwd);
-    //console.log(connection.query("SELECT * FROM Users"))
-    return res.redirect("/")
-});*/
+app.get('/register', function (req, res) {
+    fs.readFile(__dirname + "/login.html", function(err, data){
+        if (err) {
+          res.writeHead(404, {'Content-Type': 'text/html'});
+          return res.end("404 Not Found");
+        } 
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(data);
+        return res.end();
+    })
+})
 
 
 app.post('/auth', function(req, res) {
@@ -57,25 +63,22 @@ app.post('/auth', function(req, res) {
     } else {
         res.send('Źle!')
     }
-    /*bcrypt.hash(password, saltRounds, function(err, hash) {
-        console.log(hash)
-    });*/
+});
 
-    /*if (user && password) {
-        db.query('SELECT Password FROM Users WHERE Email = ?',[user],function(error, retrievedHash, fields) {
-            if (error) throw error;
-            if (retrievedHash) {
-                bcrypt.compare(password, retrievedHash, function(err, result) {
-                    req.session.loggedin = true;
-				    req.session.username = user;
-				    res.redirect('/');
-                });
-            } else {
-                res.send('Incorrect Username and/or Password!');
-            }
-            res.end();
-        });
-    }*/
+app.post('/register', function(req, res) {
+    data = {
+        Email       : req.body.email,
+        Phone       : req.body.phone,
+        Password    : req.body.password,
+        FirstName   : req.body.firstName,
+        LastName    : req.body.lastName,
+        DisplayName : req.body.displayName
+    };
+    if (register(data)){
+        res.redirect('/');
+    } else {
+        res.send('Źle, rejestrować ni umie!')
+    }
 });
 
 

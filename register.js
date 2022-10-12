@@ -1,8 +1,20 @@
+const db = require(__dirname + "/dbconnect.js");
 const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 
-const password = 'miaurek2137'
+function hash(string){
+    bcrypt.hash(string, saltRounds, function(err, hash) {
+        return hash
+    });
+}
 
-bcrypt.hash(password, saltRounds, function(err, hash) {
-    console.log(hash)
-});
+function DbAppend(data){
+    hashedPasswd = hash(data.Password);
+    db.query('INSERT INTO Users(UUID,Email,Phone,Password,FirstName,LastName,DisplayName) VALUES (UUID(),?,?,?,?,?,?)',
+    [data.Email,data.Phone,hashedPasswd,data.FirstName,data.LastName,data.DisplayName],
+    function(error){
+        if (error) throw error;
+    });
+}
+
+module.exports = DbAppend;
