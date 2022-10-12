@@ -57,9 +57,11 @@ app.get('/login', function (req, res) {
 app.post('/auth', function(req, res) {
 	let user = req.body.user;
 	let password = req.body.passwd;
+    
     bcrypt.hash(password, saltRounds, function(err, hash) {
         console.log(hash)
     });
+<<<<<<< Updated upstream
 	if (user && password) {
 		db.query('SELECT * FROM Users WHERE Email = ? AND password = ?', [user,password], function(error, results, fields) {
 			if (error) throw error;
@@ -76,6 +78,24 @@ app.post('/auth', function(req, res) {
 		res.send('Please enter Username and Password!');
 		res.end();
 	}
+=======
+
+    if (user && password) {
+        db.query('SELECT Password FROM Users WHERE Email = ?',[user],function(error, retrievedHash, fields) {
+            if (error) throw error;
+            if (retrievedHash) {
+                bcrypt.compare(password, retrievedHash, function(err, result) {
+                    req.session.loggedin = true;
+				    req.session.username = user;
+				    res.redirect('/');
+                });
+            } else {
+                res.send('Incorrect Username and/or Password!');
+            }
+            res.end();
+        });
+    }
+>>>>>>> Stashed changes
 });
 
 var server = app.listen(process.env.PORT, function () {
