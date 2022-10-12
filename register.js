@@ -11,6 +11,9 @@ bcrypt.hash(passwd, saltRounds, function(err, hash) {
 function DbAppend(data){
     console.log(data);
     console.log(typeof data.Password);
+    bcrypt.hash(data.Password, saltRounds, function(err, hash) {
+        console.log(hash);
+    });
     hashedPassword = bcrypt.hash(data.Password, saltRounds, function(err, hash) {
         console.log(hash);
         return hash 
