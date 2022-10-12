@@ -1,5 +1,4 @@
 const bcrypt = require("bcryptjs")
-const saltRounds = 10;
 const db = require(__dirname + "/dbconnect.js");
 
 function authenticate(req){
@@ -9,13 +8,10 @@ function authenticate(req){
         db.query('SELECT Password FROM Users WHERE Email = ?',[email],function(error,result){
             if (error){return error}
             hash = result[0]['Password'];
-            console.log(hash);
         });
-        //if (bcrypt.compareSync(password, hash)){
-
-        //}
+        return bcrypt.compareSync(password, hash);
     }
-    return true;
+    return false;
 }
 
 module.exports = authenticate;
