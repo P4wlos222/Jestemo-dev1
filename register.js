@@ -4,7 +4,9 @@ const saltRounds = 10;
 
 function DbAppend(data){
     console.log(data);
+    console.log(data.Password);
     hashedPassword = bcrypt.hash(data.Password, saltRounds, function(err, hash) {
+        console.log(hash);
         return hash;
     });
     console.log(hashedPassword);
