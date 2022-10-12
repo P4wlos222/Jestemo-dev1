@@ -12,6 +12,7 @@ function DbAppend(data){
     //console.log(data);
     //console.log(typeof data.Password);
     var plain = data.Password
+    console.log(typeof plain, plain);
     bcrypt.hash(plain, saltRounds, function(err, hash) {
         console.log(hash);
     });
