@@ -75,7 +75,6 @@ app.post('/auth', function(req, res) {
             }
             res.end();
         });
-        retrievedHash = db.query('SELECT Password FROM Users WHERE Email = ?',[user])
     }
 });
 
