@@ -56,9 +56,9 @@ app.post('/auth', function(req, res) {
 	let user = req.body.user;
 	let password = req.body.passwd;
 	if (user && password) {
-		db.query('SELECT * FROM Users WHERE Email = ? AND password = ?', [user,password], function(error, res, fields) {
+		db.query('SELECT * FROM Users WHERE Email = ? AND password = ?', [user,password], function(error, results, fields) {
 			if (error) throw error;
-			if (res.length > 0) {
+			if (results.length > 0) {
 				req.session.loggedin = true;
 				req.session.username = user;
 				res.redirect('/');
