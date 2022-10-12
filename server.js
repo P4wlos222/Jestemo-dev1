@@ -3,10 +3,9 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const express = require('express');
 const app = express();
-const db = require(__dirname + "/dbconnect.js");
-const bcrypt = require("bcryptjs")
-const saltRounds = 10;
-
+//const db = require(__dirname + "/dbconnect.js");
+const auth = require(__dirname + "/auth.js");
+//process.env.PORT = 8080;
 
 app.use(session({
 	secret: 'secret',
@@ -53,13 +52,16 @@ app.get('/login', function (req, res) {
 
 
 app.post('/auth', function(req, res) {
-	let user = req.body.user;
-	let password = req.body.passwd;
-    bcrypt.hash(password, saltRounds, function(err, hash) {
+    if (auth(req)){
+        res.redirect('/');
+    } else {
+        res.send('Źle!')
+    }
+    /*bcrypt.hash(password, saltRounds, function(err, hash) {
         console.log(hash)
-    });
+    });*/
 
-    if (user && password) {
+    /*if (user && password) {
         db.query('SELECT Password FROM Users WHERE Email = ?',[user],function(error, retrievedHash, fields) {
             if (error) throw error;
             if (retrievedHash) {
@@ -73,7 +75,7 @@ app.post('/auth', function(req, res) {
             }
             res.end();
         });
-    }
+    }*/
 });
 
 
