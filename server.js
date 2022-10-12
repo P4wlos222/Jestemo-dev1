@@ -13,7 +13,7 @@ const dbn = mysql.createConnection({
 	password : '5c24Dfcr42wYngE6mG8p',
 	port     : 7863,
 	database : 'railway'
-}); process.env.mysql.host
+});
 
 const db= mysql.createConnection('mysql://${{ MYSQLUSER }}:${{ MYSQLPASSWORD }}@${{ MYSQLHOST }}:${{ MYSQLPORT }}/${{ MYSQLDATABASE }}')
 
