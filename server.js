@@ -3,10 +3,8 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const express = require('express');
 const app = express();
-const mysql = require('mysql2');
-const crypto = require("crypto");
 const db = require(__dirname + "/dbconnect.js");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 const saltRounds = 10;
 
 
