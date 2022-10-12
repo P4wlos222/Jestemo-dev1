@@ -4,9 +4,10 @@ const session = require('express-session');
 const express = require('express');
 const app = express();
 const mysql = require('mysql2');
-
-
+const crypto = require("crypto");
 const db = require(__dirname + "/dbconnect.js");
+const bcrypt = require("bcrypt")
+const saltRounds = 10;
 
 
 app.use(session({
@@ -17,10 +18,10 @@ app.use(session({
 
 app.use(express.json());
 
-
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(__dirname + '/public'));
+
 
 app.get('/', function (req, res) {
     fs.readFile(__dirname + "/index.html", function(err, data){
@@ -52,9 +53,13 @@ app.get('/login', function (req, res) {
     return res.redirect("/")
 });*/
 
+
 app.post('/auth', function(req, res) {
 	let user = req.body.user;
 	let password = req.body.passwd;
+    bcrypt.hash(password, saltRounds, function(err, hash) {
+        console.log(hash)
+    });
 	if (user && password) {
 		db.query('SELECT * FROM Users WHERE Email = ? AND password = ?', [user,password], function(error, results, fields) {
 			if (error) throw error;
