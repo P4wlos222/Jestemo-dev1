@@ -6,12 +6,10 @@ function authenticate(req){
     let email = req.body.email;
 	let password = req.body.passwd;
     if (email && password){
-        hash = db.query('SELECT Password FROM Users WHERE Email = ?',[email],function(error,result){
+        db.query('SELECT Password FROM Users WHERE Email = ?',[email],function(error,result){
             if (error){return error}
-            console.log(error,result);
-            console.log(typeof result);
-            console.log(typeof result[0]);
-            console.log(result['Password']);
+            hash = result[0]['Password'];
+            console.log(hash);
         });
         //if (bcrypt.compareSync(password, hash)){
 
