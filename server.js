@@ -45,7 +45,7 @@ app.get('/login', function (req, res) {
 })
 
 app.get('/register', function (req, res) {
-    fs.readFile(__dirname + "/login.html", function(err, data){
+    fs.readFile(__dirname + "/register.html", function(err, data){
         if (err) {
           res.writeHead(404, {'Content-Type': 'text/html'});
           return res.end("404 Not Found");
