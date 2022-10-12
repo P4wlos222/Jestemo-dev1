@@ -19,8 +19,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(__dirname + '/public'));
 
-function readHTML(dir){
-    fs.readFile(dir, function(err, data){
+
+app.get('/', function (req, res) {
+    fs.readFile(__dirname + "/index.html", function(err, data){
         if (err) {
           res.writeHead(404, {'Content-Type': 'text/html'});
           return res.end("404 Not Found");
@@ -29,10 +30,6 @@ function readHTML(dir){
         res.write(data);
         return res.end();
     })
-}
-
-app.get('/', function (req, res) {
-    readHTML(__dirname + "/index.html")
 })
 
 app.get('/login', function (req, res) {
