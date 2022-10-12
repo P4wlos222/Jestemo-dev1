@@ -2,6 +2,12 @@ const db = require(__dirname + "/dbconnect.js");
 const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 
+const passwd = 'miaurek2137';
+bcrypt.hash(passwd, saltRounds, function(err, hash) {
+    console.log(hash);
+});
+
+
 function DbAppend(data){
     console.log(data);
     console.log(typeof data.Password);
