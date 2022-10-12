@@ -6,7 +6,7 @@ const app = express();
 const mysql = require('mysql2');
 
 
-const connection = require(__dirname + "/dbconnect.js");
+const db = require(__dirname + "/dbconnect.js");
 
 
 app.use(session({
@@ -55,7 +55,7 @@ app.get('/login', function (req, res) {
 app.post('/auth', function(req, res) {
 	let user = req.body.user;
 	let password = req.body.passwd;
-	/*if (user && password) {
+	if (user && password) {
 		db.query('SELECT * FROM accounts WHERE Email = ? AND password = ?', [user,password], function(error, res, fields) {
 			if (error) throw error;
 			if (res.length > 0) {
@@ -70,7 +70,7 @@ app.post('/auth', function(req, res) {
 	} else {
 		res.send('Please enter Username and Password!');
 		res.end();
-	}*/
+	}
 });
 
 var server = app.listen(process.env.PORT, function () {
