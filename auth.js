@@ -10,6 +10,7 @@ function authenticate(req){
             if (error){return error}
             console.log(error,result);
             console.log(typeof result);
+            console.log(typeof result[0]);
             console.log(result['Password']);
         });
         //if (bcrypt.compareSync(password, hash)){
