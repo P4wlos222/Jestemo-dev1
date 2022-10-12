@@ -9,9 +9,9 @@ function authenticate(req){
         hash = db.query('SELECT Password FROM Users WHERE Email = ?',[email],function(error,result,fields){
             console.log(error,result,fields);
         });
-        if (bcrypt.compareSync(password, hash)){
+        //if (bcrypt.compareSync(password, hash)){
 
-        }
+        //}
     }
     return true;
 }
