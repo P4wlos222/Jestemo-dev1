@@ -6,7 +6,7 @@ const app = express();
 const mysql = require('mysql');
 
 
-const connection = require("./connection.js");
+const connection = require(__dirname + "/dbconnect.html");
 
 
 app.use(session({
