@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 connection = mysql.createConnection({
     host     : 'containers-us-west-100.railway.app',
