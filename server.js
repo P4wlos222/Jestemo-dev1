@@ -3,8 +3,8 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const express = require('express');
 const app = express();
-const auth = require(__dirname + "/backend/auth.js");
-const register = require(__dirname + "/backend/register.js");
+const auth = require(__dirname + "/auth.js");
+const register = require(__dirname + "/register.js");
 //process.env.PORT = 8080;
 
 app.use(session({
