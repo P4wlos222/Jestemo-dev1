@@ -30,7 +30,7 @@ form.addEventListener('submit', (e) =>{
             },
             redirect: 'follow',
             referrerPolicy: 'no-referrer',
-            body: JSON.stringify({passwd: password, email: email})})
+            body: JSON.stringify({passwd: password.value, email: email.value})})
         
             .then(response => {return response.json()})
         
