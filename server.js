@@ -22,7 +22,7 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
     if (req.session.loggedin){
-        res.send('woo hoo')
+        res.send(req.session.uuid);
     };
     fs.readFile(__dirname + "/index.html", function(err, data){
         if (err) {
