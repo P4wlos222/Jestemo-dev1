@@ -5,6 +5,8 @@ const emailResponse = document.querySelector('#emailresponse')
 const passwdResponse = document.querySelector('#passwdresponse')
 
 form.addEventListener('submit', (e) =>{
+    emailResponse.innerHTML = ("")
+    passwdResponse.innerHTML = ("")
     let passed = true
     if (email.value === '' || email.value == null)
     {
