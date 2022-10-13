@@ -9,7 +9,13 @@ function authenticate(req){
             if (error){return error}
             hash = result[0]['Password'];
         });
-        return bcrypt.compareSync(password, hash);
+        if (bcrypt.compareSync(password, hash))
+        {
+            req.session.loggedin = true;
+            return true;
+        } else {
+            return false;
+        };
     }
     return false;
 }

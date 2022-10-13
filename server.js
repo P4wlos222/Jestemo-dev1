@@ -21,6 +21,9 @@ app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function (req, res) {
+    if (req.session.loggedin){
+        res.send('woo hoo')
+    };
     fs.readFile(__dirname + "/index.html", function(err, data){
         if (err) {
           res.writeHead(404, {'Content-Type': 'text/html'});
