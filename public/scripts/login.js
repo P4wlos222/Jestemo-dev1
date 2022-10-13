@@ -1,22 +1,26 @@
-const responseField = document.querySelector('#response')
 const email = document.querySelector('#email')
 const password = document.querySelector('#passwd')
 const form = document.querySelector('#logform')
+const emailResponse = document.querySelector('#emailResponse')
+const passwdResponse = document.querySelector('#passwdResponse')
 
 form.addEventListener('submit', (e) =>{
-    let messages = []
+    let passed = true
     if (email.value === '' || email.value == null)
     {
-        messages.push('Wpisz adres e-mail!')
+        emailResponse.innerHTML = ("Wpisz adres e-mail!")
+        passed = false
     }
     if (password.value === '' || password.value == null)
     {
-        messages.push('Wpisz hasło!')
+        emailResponse.innerHTML = ("Wpisz hasło!")
+        passed = false
     }
 
-    if (messages.length > 0)
+    if (passed)
     {
+        
+    } else {
         e.preventDefault()
-        responseField.innerHTML = messages.join(', ')
     }
 })
