@@ -1,5 +1,5 @@
 const bcrypt = require("bcryptjs")
-const db = require(__dirname + "/dbconnect.js");
+const db = require(__dirname + "/Backend/dbconnect.js");
 
 function authenticate(req){
     let email = req.body.email;
