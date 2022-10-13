@@ -2,6 +2,7 @@ const bcrypt = require("bcryptjs")
 const db = require(__dirname + "/dbconnect.js");
 
 function authenticate(req){
+    console.log(email,password)
     let email = req.body.email;
 	let password = req.body.passwd;
     if (email && password){
