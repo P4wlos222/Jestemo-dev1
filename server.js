@@ -5,7 +5,6 @@ const express = require('express');
 const app = express();
 const auth = require(__dirname + "/auth.js");
 const register = require(__dirname + "/register.js");
-//process.env.PORT = 8080;
 
 app.use(session({
 	secret: 'secret',
@@ -76,13 +75,8 @@ app.get('/register', function (req, res) {
     })
 })
 
-
 app.post('/auth', function(req, res) {
-    if (auth(req)){
-        res.redirect('/dashboard');
-    } else {
-        res.send('Źle!')
-    }
+    return auth(req)
 });
 
 app.post('/register', function(req, res) {

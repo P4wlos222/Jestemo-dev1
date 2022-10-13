@@ -7,7 +7,11 @@ function authenticate(req){
     if (email && password){
         db.query('SELECT Password FROM Users WHERE Email = ?',[email],function(err,result){
             if (err){return err}
-            hash = result[0]['Password'];
+            if (result.length > 0){
+                hash = result[0]['Password'];
+            } else {
+                return 'emailNotValid'
+            }
         });
         if (bcrypt.compareSync(password, hash))
         {
@@ -16,9 +20,9 @@ function authenticate(req){
                 if (err){return err}
                 req.session.uuid = result
             });
-            return true;
+            return 'valid';
         } else {
-            return false;
+            return 'passwdNotValid';
         };
     }
     return false;

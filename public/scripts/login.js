@@ -1,3 +1,5 @@
+const { response } = require("express")
+
 const email = document.querySelector('#email')
 const password = document.querySelector('#passwd')
 const form = document.querySelector('#logform')
@@ -13,14 +15,37 @@ form.addEventListener('submit', (e) =>{
     }
     if (password.value === '' || password.value == null)
     {
-        emailResponse.innerHTML = ("Wpisz hasło!")
+        passwdResponse.innerHTML = ("Wpisz hasło!")
         passed = false
     }
 
     if (passed)
     {
-        console.log('passed')
+        fetch('/auth',{
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer',
+            body: JSON.stringify({passwd: password, email: email})})
+        
+            .then(response => {return response.json()})
+        
+        if (response == 'valid'){
+            window.location.assign('/dashboard');
+        }
+        if (response == 'emailNotValid'){
+            emailResponse.innerHTML = ("Nieprawidłowy adres e-mail!")
+        }
+        if (response == 'passwdNotValid'){
+            passwdResponse.innerHTML = ("Nieprawidłowe Hasło!")
+        }
     } else {
         e.preventDefault()
     }
 })
+
