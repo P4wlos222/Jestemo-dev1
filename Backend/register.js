@@ -1,4 +1,4 @@
-const db = require(__dirname + "/Backend/dbconnect.js");
+const db = require(__dirname + "/dbconnect.js");
 const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 
