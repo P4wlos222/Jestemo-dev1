@@ -43,8 +43,7 @@ form.addEventListener('submit', (e) =>{
         if (response == 'passwdNotValid'){
             passwdResponse.innerHTML = ("Nieprawidłowe Hasło!")
         }
-    } else {
-        e.preventDefault()
     }
+    e.preventDefault()
 })
 
