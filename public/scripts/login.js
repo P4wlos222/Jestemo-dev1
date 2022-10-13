@@ -19,7 +19,7 @@ form.addEventListener('submit', (e) =>{
 
     if (passed)
     {
-        
+        console.log('passed')
     } else {
         e.preventDefault()
     }
