@@ -102,6 +102,4 @@ app.post('/register', function(req, res) {
 });
 
 
-/*var server = app.listen(process.env.PORT, function () {
-    console.log('Node server is running..');
-});*/
+var server = app.listen(process.env.PORT);
