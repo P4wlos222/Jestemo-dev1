@@ -19,6 +19,7 @@ form.addEventListener('submit', (e) =>{
 
     if (passed)
     {
+        console.log('passed')
         fetch('/auth',{
             method: 'POST',
             mode: 'cors',
