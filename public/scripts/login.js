@@ -21,7 +21,7 @@ form.addEventListener('submit', (e) =>{
 
     if (passed)
     {
-        console.log('passed')
+        var res
         fetch('/auth',{
             method: 'POST',
             mode: 'cors',
@@ -34,15 +34,16 @@ form.addEventListener('submit', (e) =>{
             referrerPolicy: 'no-referrer',
             body: JSON.stringify({passwd: password.value, email: email.value})})
         
-            .then(response => {return response.json()})
+        .then(response => { res = response.json()})
         
-        if (response == 'valid'){
+        console.log(res)
+        if (res == 'valid'){
             window.location.assign('/dashboard');
         }
-        if (response == 'emailNotValid'){
+        if (res == 'emailNotValid'){
             emailResponse.innerHTML = ("Nieprawidłowy adres e-mail!")
         }
-        if (response == 'passwdNotValid'){
+        if (res == 'passwdNotValid'){
             passwdResponse.innerHTML = ("Nieprawidłowe Hasło!")
         }
     }
