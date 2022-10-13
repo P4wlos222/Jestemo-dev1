@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>JestemO - Logowanie</title>
-        <link rel="stylesheet" href="../../styles/index_styles.css">
+        <title>JestemO - Rejestracja</title>
+        <link rel="stylesheet" href="styles/index_styles.css">
         <meta charset="UTF-8">
-        <script src="login.js" type="text/javascript" defer></script>
     </head>
     <body>
         <div id="holder">
@@ -28,14 +27,16 @@
             <div id="navbar">
 
             </div>
-            <div id="logform">
-                <form action="/auth" method="post">
+            <div id="regform">
+                <form action="/register" method="post">
                     <input id="email" name="email" placeholder="Adres e-mail" type="text">
-                    <input id="passwd" name="passwd" placeholder="Hasło" type="password">
+                    <input id="phone" name="phone" placeholder="Numer telefonu" type="text">
+                    <input id="password" name="password" placeholder="Hasło" type="password">
+                    <input id="firstName" name="firstName" placeholder="Imię" type="text">
+                    <input id="lastName" name="lastName" placeholder="Nazwisko" type="text">
+                    <input id="displayName" name="displayName" placeholder="Nazwa wyświetlana" type="text">
                     <input type="submit">
                 </form>
-                <div id='response' style="color: red;"></div>
-                <a href="/register">Zarejestruj się</a>
             </div>
         </div>
     </body>

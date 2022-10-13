@@ -3,8 +3,8 @@ const bodyParser = require("body-parser");
 const session = require('express-session');
 const express = require('express');
 const app = express();
-const auth = require(__dirname + "/Backend/auth.js");
-const register = require(__dirname + "/Backend/register.js");
+const auth = require(__dirname + "/backend/auth.js");
+const register = require(__dirname + "/backend/register.js");
 //process.env.PORT = 8080;
 
 app.use(session({
@@ -17,14 +17,14 @@ app.use(express.json());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(__dirname + '/Public'));
+app.use(express.static(__dirname + '/public'));
 
 
 app.get('/', function (req, res) {
     if (req.session.loggedin){
         res.redirect('/dashboard')
     } else{
-        fs.readFile(__dirname + "/Frontend/index.html", function(err, data){
+        fs.readFile(__dirname + "/index.html", function(err, data){
             if (err) {
               res.writeHead(404, {'Content-Type': 'text/html'});
               return res.end("404 Not Found");
@@ -40,7 +40,7 @@ app.get('/dashboard', function (req, res) {
     if (req.session.loggedin){
         res.send('Zalogowany');
     } else{
-        fs.readFile(__dirname + "/Frontend/index.html", function(err, data){
+        fs.readFile(__dirname + "/index.html", function(err, data){
             if (err) {
               res.writeHead(404, {'Content-Type': 'text/html'});
               return res.end("404 Not Found");
@@ -53,7 +53,7 @@ app.get('/dashboard', function (req, res) {
 })
 
 app.get('/login', function (req, res) {
-    fs.readFile(__dirname + "/Frontend/Login/login.html", function(err, data){
+    fs.readFile(__dirname + "/login.html", function(err, data){
         if (err) {
           res.writeHead(404, {'Content-Type': 'text/html'});
           return res.end("404 Not Found");
@@ -65,7 +65,7 @@ app.get('/login', function (req, res) {
 })
 
 app.get('/register', function (req, res) {
-    fs.readFile(__dirname + "/Frontend/Register/register.html", function(err, data){
+    fs.readFile(__dirname + "/register.html", function(err, data){
         if (err) {
           res.writeHead(404, {'Content-Type': 'text/html'});
           return res.end("404 Not Found");
