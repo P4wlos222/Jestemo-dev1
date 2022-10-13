@@ -23,16 +23,17 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function (req, res) {
     if (req.session.loggedin){
         res.send(req.session.uuid);
+    } else{
+        fs.readFile(__dirname + "/index.html", function(err, data){
+            if (err) {
+              res.writeHead(404, {'Content-Type': 'text/html'});
+              return res.end("404 Not Found");
+            } 
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(data);
+            return res.end();
+        })
     };
-    fs.readFile(__dirname + "/index.html", function(err, data){
-        if (err) {
-          res.writeHead(404, {'Content-Type': 'text/html'});
-          return res.end("404 Not Found");
-        } 
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.write(data);
-        return res.end();
-    })
 })
 
 app.get('/login', function (req, res) {
