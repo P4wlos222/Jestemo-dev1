@@ -2,9 +2,9 @@ const bcrypt = require("bcryptjs")
 const db = require(__dirname + "/dbconnect.js");
 
 function authenticate(req){
-    console.log(email,password)
     let email = req.body.email;
 	let password = req.body.passwd;
+    console.log(email,password)
     if (email && password){
         db.query('SELECT Password FROM Users WHERE Email = ?',[email],function(err,result){
             if (err){return err}
