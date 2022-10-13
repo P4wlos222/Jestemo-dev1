@@ -1,4 +1,5 @@
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcryptjs");
+const e = require("express");
 const db = require(__dirname + "/dbconnect.js");
 
 function authenticate(req){
@@ -6,25 +7,29 @@ function authenticate(req){
 	let password = req.body.passwd;
     console.log(email,password)
     if (email && password){
-        db.query('SELECT Password FROM Users WHERE Email = ?',[email],function(err,result){
+        if (db.query('SELECT Password FROM Users WHERE Email = ?',[email],function(err,result){
             if (err){return err}
             if (result.length > 0){
                 hash = result[0]['Password'];
+                return true
             } else {
-                return 'emailNotValid'
+                return false
             }
-        });
-        if (bcrypt.compareSync(password, hash))
-        {
-            req.session.loggedin = true;
-            db.query('SELECT UUID FROM Users WHERE Email = ?',[email],function(err,result){
-                if (err){return err}
-                req.session.uuid = result
-            });
-            return 'valid';
+        })){
+            if (bcrypt.compareSync(password, hash)){
+                req.session.loggedin = true;
+                db.query('SELECT UUID FROM Users WHERE Email = ?',[email],function(err,result){
+                    if (err){return err}
+                    req.session.uuid = result
+                });
+                return 'valid';
+            } else {
+                return 'passwdNotValid';
+            };
         } else {
-            return 'passwdNotValid';
+            return 'emailNotValid'
         };
+        
     }
     return false;
 }
