@@ -6,6 +6,7 @@ function authenticate(req){
     let email = req.body.email;
 	let password = req.body.passwd;
     let hash = '';
+    console.log(email,password)
     if (email && password){
         console.log('email && password')
         db.query('SELECT Password FROM Users WHERE Email = ?',[email],function(err,result){
