@@ -1,5 +1,3 @@
-const { response } = require("express")
-
 const email = document.querySelector('#email')
 const password = document.querySelector('#passwd')
 const form = document.querySelector('#logform')
