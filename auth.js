@@ -26,6 +26,7 @@ function authenticate(req){
             }
         })
     }
+    return 'madafaka'
 }
 
 module.exports = authenticate;
