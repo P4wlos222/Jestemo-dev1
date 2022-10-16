@@ -1,3 +1,5 @@
+const { response } = require("express")
+
 const email = document.querySelector('#email')
 const password = document.querySelector('#passwd')
 const form = document.querySelector('#logform')
@@ -23,9 +25,13 @@ form.addEventListener('submit', (e) =>{
     if (passed)
     {
         let data = {passwd: password.value, email: email.value};
-        response = fetch('/auth', {
+        fetch('/auth', {
             method: 'POST',
             body: form
+        })
+        .then (response => {return response.json()})
+        .then (data => {
+            console.log(data)
         })
         /*.then((response) => response.json())
         .then((data) => {
@@ -33,9 +39,7 @@ form.addEventListener('submit', (e) =>{
         })
         .catch((error) => {
             console.error('Error:', error);
-        });*/
-        
-        console.log(response.json())
+        });
         if (res == 'valid'){
             window.location.assign('/dashboard');
         }
@@ -44,7 +48,7 @@ form.addEventListener('submit', (e) =>{
         }
         if (res == 'passwdNotValid'){
             passwdResponse.innerHTML = ("Nieprawidłowe Hasło!")
-        }
+        }*/
     }
 })
 
