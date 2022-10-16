@@ -6,7 +6,7 @@ function authenticate(req,callback){
     let email = req.body.email;
 	let password = req.body.passwd;
     let hash = '';
-    let res = '';
+    let res = 'def';
     console.log(email,password)
     if (email && password){
         console.log('email && password')
