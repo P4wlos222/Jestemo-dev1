@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const e = require("express");
 const db = require(__dirname + "/dbconnect.js");
 
-function authenticate(req){
+function authenticate(req,callback){
     let email = req.body.email;
 	let password = req.body.passwd;
     let hash = '';
@@ -22,19 +22,20 @@ function authenticate(req){
                         if (err){return err}
                         req.session.uuid = result
                     });
-                    return 'valid';
+                    res = 'valid';
                 } else {
                     console.log('pass not valid')
-                    return 'passwdNotValid'
+                    res = 'passwdNotValid'
                 }
             } else {
                 console.log('email not valid')
-                return 'emailNotValid'
+                res = 'emailNotValid'
             }
         })
     } else {
-        return 'invalidRequest'
+        res = 'invalidRequest'
     }
+    callback(res)
 }
 
 module.exports = authenticate;
