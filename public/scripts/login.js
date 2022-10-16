@@ -7,6 +7,7 @@ const emailResponse = document.querySelector('#emailresponse')
 const passwdResponse = document.querySelector('#passwdresponse')
 
 form.addEventListener('submit', (e) =>{
+    e.preventDefault()
     emailResponse.innerHTML = ("")
     passwdResponse.innerHTML = ("")
     let passed = true
@@ -54,6 +55,5 @@ form.addEventListener('submit', (e) =>{
             passwdResponse.innerHTML = ("Nieprawidłowe Hasło!")
         }
     }
-    e.preventDefault()
 })
 
