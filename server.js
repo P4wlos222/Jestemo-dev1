@@ -1,10 +1,14 @@
 const fs = require('fs');
 const bodyParser = require("body-parser");
+const cors = require('cors');
 const session = require('express-session');
 const express = require('express');
 const app = express();
 const auth = require(__dirname + "/auth.js");
 const register = require(__dirname + "/register.js");
+
+
+
 
 app.use(session({
 	secret: 'secret',
@@ -17,6 +21,8 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(express.static(__dirname + '/public'));
+
+app.use(cors());
 
 
 app.get('/', function (req, res) {

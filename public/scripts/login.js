@@ -1,3 +1,5 @@
+const { response } = require("express")
+
 const email = document.querySelector('#email')
 const password = document.querySelector('#passwd')
 const form = document.querySelector('#logform')
@@ -21,7 +23,7 @@ form.addEventListener('submit', (e) =>{
 
     if (passed)
     {
-        var res
+        let data = {passwd: password.value, email: email.value};
         fetch('/auth',{
             method: 'POST',
             mode: 'cors',
@@ -32,11 +34,16 @@ form.addEventListener('submit', (e) =>{
             },
             redirect: 'follow',
             referrerPolicy: 'no-referrer',
-            body: JSON.stringify({passwd: password.value, email: email.value})})
+            body: JSON.stringify(data)})
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
         
-        .then(response => { res = response.json()})
-        
-        console.log(res)
+        console.log(response)
         if (res == 'valid'){
             window.location.assign('/dashboard');
         }
