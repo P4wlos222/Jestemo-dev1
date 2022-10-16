@@ -7,11 +7,15 @@ function authenticate(req){
 	let password = req.body.passwd;
     let hash = '';
     if (email && password){
+        console.log('email && password')
         db.query('SELECT Password FROM Users WHERE Email = ?',[email],function(err,result){
+            console.log('queried')
             if (err){return err}
             if (result.length > 0){
+                console.log('found pass for email')
                 hash = result[0]['Password'];
                 if (bcrypt.compareSync(password, hash)){
+                    console.log('passwdmatch')
                     req.session.loggedin = true;
                     db.query('SELECT UUID FROM Users WHERE Email = ?',[email],function(err,result){
                         if (err){return err}
@@ -19,14 +23,17 @@ function authenticate(req){
                     });
                     return 'valid';
                 } else {
+                    console.log('pass not valid')
                     return 'passwdNotValid'
                 }
             } else {
+                console.log('email not valid')
                 return 'emailNotValid'
             }
         })
+    } else {
+        return 'invalidRequest'
     }
-    return 'madafaka'
 }
 
 module.exports = authenticate;
