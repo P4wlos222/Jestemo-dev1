@@ -82,7 +82,7 @@ app.get('/register', function (req, res) {
 })
 
 app.post('/auth', function(req, res) {
-    res.send(auth(req))
+    res.send({returned: auth(req)})
 });
 
 app.post('/register', function(req, res) {
