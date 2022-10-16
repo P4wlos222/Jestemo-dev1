@@ -22,14 +22,22 @@ form.addEventListener('submit', (e) =>{
 
     if (passed)
     {
-        let data = {passwd: password.value, email: email.value};
+        //let data = {passwd: password.value, email: email.value};
         fetch('/auth', {
             method: 'POST',
-            body: form
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'same-origin',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer',
+            body: form,
         })
         .then (response => {return response})
         .then (data => {
-            console.log(data.body)
+            console.log(data.body.returned)
         })
         /*.then((response) => response.json())
         .then((data) => {
