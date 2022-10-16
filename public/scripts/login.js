@@ -22,7 +22,7 @@ form.addEventListener('submit', (e) =>{
 
     if (passed)
     {
-        //let data = {passwd: password.value, email: email.value};
+        let data = {passwd: password.value, email: email.value};
         fetch('/auth', {
             method: 'POST',
             mode: 'cors',
@@ -33,7 +33,7 @@ form.addEventListener('submit', (e) =>{
             },
             redirect: 'follow',
             referrerPolicy: 'no-referrer',
-            body: form,
+            body: JSON.stringify(data)
         })
         .then (response => {return response})
         .then (data => {
