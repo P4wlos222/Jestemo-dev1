@@ -23,26 +23,19 @@ form.addEventListener('submit', (e) =>{
     if (passed)
     {
         let data = {passwd: password.value, email: email.value};
-        fetch('/auth',{
+        response = fetch('/auth', {
             method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache',
-            credentials: 'same-origin',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            redirect: 'follow',
-            referrerPolicy: 'no-referrer',
-            body: JSON.stringify(data)})
-        .then((response) => response.json())
+            body: form
+        })
+        /*.then((response) => response.json())
         .then((data) => {
             console.log('Success:', data);
         })
         .catch((error) => {
             console.error('Error:', error);
-        });
+        });*/
         
-        console.log(response)
+        console.log(response.json())
         if (res == 'valid'){
             window.location.assign('/dashboard');
         }
