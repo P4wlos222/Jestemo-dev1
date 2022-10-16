@@ -8,8 +8,6 @@ const auth = require(__dirname + "/auth.js");
 const register = require(__dirname + "/register.js");
 
 
-
-
 app.use(session({
 	secret: 'secret',
 	resave: true,
