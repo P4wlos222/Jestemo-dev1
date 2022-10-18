@@ -1,0 +1,117 @@
+.weather
+{
+    position:sticky;
+    width:max-content;
+    height: 20px;
+    background-color: rgb(98, 98, 255);
+    left:0;
+    top:50px;
+    display:block;
+    z-index: 1;
+}
+
+#weather-main
+{
+    position: block;
+    width: max-content;
+    text-align: center;
+}
+
+#weather-select
+{
+    width: max-content;
+    display: block;
+    visibility:hidden;
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+}
+
+.top-img-div
+{
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+.top-img
+{
+    max-height: 300px;
+    max-width: 100%;
+    min-height:100px;
+
+}
+.topic
+{
+    color:black;
+    font-size: 50px;
+    text-align: center;
+}
+.article
+{
+    align-items: center;
+    text-align: justify;
+    display: block;
+    margin: 0px 320px 0px 200px;
+}
+#bar
+{
+    position:sticky;
+    width:250px;
+    background-color: red;
+    top:70px;
+    float:right;
+    right: 25px;
+    border:solid black 1px;
+    color:black;
+    z-index: 1;
+}
+
+#bar a
+{
+    display: block;
+    padding: 2px 10px;
+    color:white;
+}
+#bar a:hover
+{
+    background-color: blue;
+}
+
+#bar > ul
+{
+    list-style-type: none;
+    padding: 0;
+	margin: 0;
+    text-align: center;
+}
+
+#bar li
+{
+    display: block;
+}
+
+.bar-tag
+{
+    display: block;
+    padding: 0;
+}
+
+.feed
+{
+    align-items: center;
+    text-align: justify;
+    display: block;
+    margin: 0px 320px 0px 200px;
+}
+.feed-obj
+{
+    display: block;
+    width:100%;
+    text-align: left;
+    border: solid black 1px;
+    margin-bottom: 5px;
+}
+.feed-a
+{
+    font-size: 30px;
+}

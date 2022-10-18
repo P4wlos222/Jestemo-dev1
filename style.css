@@ -1,0 +1,160 @@
+body{
+    margin:0;
+    padding: 0;
+    border:0;
+    display: block;
+    color:black;
+}
+a{
+    text-decoration: none;
+}
+
+header a
+{
+    color:white;
+}
+
+header{
+    position:sticky;
+    top:0;
+    width: 100%;
+    z-index: 2;
+}
+
+.header-content-top{
+    display: flex;
+    justify-content:space-around;
+    align-items: center ;
+    background-color:#4f4f4f ;
+    color:white;
+    height: 50px;
+}
+
+.logo
+{
+    font-weight: 700;
+    font-size: 27px;
+    color:white;
+}
+
+.sign-items
+{
+    display: none;
+}
+
+.sign_up{
+    color: #fff;
+    background-color: rgba(185, 185, 185, 0.651);
+    width:75px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-align: center;
+    float:left;
+    margin-right: 5px;
+}
+
+.sign_in{
+    color: #fff;
+    background-color: rgba(185, 185, 185, 0.651);
+    width:75px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-align: center;
+    float:left;
+}
+
+.search-label {
+    position: absolute;
+    clip: rect(1px,1px,1px,1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+}
+
+
+.nav-ul {
+    display: inline-block;
+    list-style-type: none;
+    color:white;
+	padding: 0;
+	margin: 0;
+    justify-content: center;
+
+}
+
+.nav-ul a
+{
+	display: block;
+    padding: 2px 5px;
+}
+
+.nav-ul > li{
+    float:left;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    display:grid;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+}
+
+.nav-ul > li:hover{
+    background-color: #8e8e8e;
+}
+
+.nav-ul > li > ul
+{
+    list-style-type: none;
+    padding: 0;
+	margin: 0;
+	height: 30px;
+	display: none;
+    margin-top: 8px;
+}
+
+.nav-ul > li:hover > ul
+{
+	display: block;
+}
+
+.nav-ul > li > ul > li
+{
+	background-color:#999999;
+	position: relative;
+	z-index: 3;    
+    width: 100px;
+    height: 30px;
+}
+
+.nav-ul > li > ul > li:hover
+{
+	background-color: #444444;
+}
+
+.add-article
+{
+    color: #fff;
+    background-color: rgba(185, 185, 185, 0.651);
+    padding: 3px 10px;
+    width: max-content;
+    border-radius: 5px;
+    text-align: center;
+    float:left;
+}
+
+.profile-icon
+{
+    width:35px;
+    height: 35px;
+    display: block;
+    background-color: white;
+    border: solid 1px black;
+}
+.profile-icon-img
+{
+    width: 35px;
+    height: 35px;
+}
+
