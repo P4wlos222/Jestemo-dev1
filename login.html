@@ -1,43 +1,27 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>JestemO - Logowanie</title>
-        <link rel="stylesheet" href="styles/index_styles.css">
-        <meta charset="UTF-8">
-        <script src="scripts/login.js" type="text/javascript" defer></script>
-    </head>
-    <body>
-        <div id="holder">
-            <div id="header">
-                <a href="/" style="display:block">
-                    <div id="homebutton">
-                        home
-                    </div>
-                </a>
-                
-                <div id="logo">
-                    JestemO
-                </div>
-                
-                <a href="/login" style="display:block">
-                    <div id="loginbutton">
-                        Zaloguj się
-                    </div>
-                </a>             
-            </div>
-            <div id="navbar">
+<html lang="pl">
 
-            </div>
-            <div id="logform">
-                <form action="/" method="post">
-                    <input id="email" name="email" placeholder="Adres e-mail" type="text"><br>
-                    <label class="response" id="emailresponse"></label><br>
-                    <input id="passwd" name="passwd" placeholder="Hasło" type="password"><br>
-                    <label class="response" id="passwdresponse"></label><br>
-                    <input type="submit">
-                </form>
-                <a href="/register">Zarejestruj się</a>
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="1"> -->
+    
+    <title>LOGIN</title>
+
+    <link rel="icon" href="">
+
+    <!--STYLE-->
+    <link rel="stylesheet" href="style-login.css">
+    <script src="header-10.js" defer></script>
+</head>
+
+<body>
+        <div class="login-container">
+            <input type="text" placeholder="Email address">
+            <input type="password" placeholder="Password">
+            <button class="login-button">Login</button>
+            <a href="register.html">Create new Account</a>
         </div>
-    </body>
-</html>
+    
+</body>
