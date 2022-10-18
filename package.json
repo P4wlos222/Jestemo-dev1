@@ -4,6 +4,7 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
+    "express-validator": "^6.14.2",
     "mysql2": "^2.3.3"
   },
   "name": "http-nodejs",

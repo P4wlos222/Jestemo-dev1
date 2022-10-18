@@ -12,16 +12,18 @@
     <link rel="icon" href="">
 
     <!--STYLE-->
-    <link rel="stylesheet" href="style-login.css">
-    <script src="header-10.js" defer></script>
+    <link rel="stylesheet" href="styles/style-login.css">
+    <script src="scripts/header-10.js" defer></script>
+    <script src="scripts/login.js" defer></script>
 </head>
 
 <body>
-        <div class="login-container">
-            <input type="text" placeholder="Email address">
-            <input type="password" placeholder="Password">
-            <button class="login-button">Login</button>
-            <a href="register.html">Create new Account</a>
-        </div>
-    
+    <form id="logform" action="/login" method="post" class="login-container">
+        <input id="email" name="email" placeholder="Adres e-mail" type="text"><br>
+        <label class="response" id="emailresponse"></label><br>
+        <input id="passwd" name="passwd" placeholder="Hasło" type="password"><br>
+        <label class="response" id="passwdresponse"></label><br>
+        <input type="submit">
+    </form>
+    <a href="/register">Zarejestruj się</a>
 </body>

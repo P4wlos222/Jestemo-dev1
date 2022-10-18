@@ -1,11 +1,15 @@
 const fs = require('fs');
 const bodyParser = require("body-parser");
 const cors = require('cors');
-const session = require('express-session');
 const express = require('express');
+const session = require('express-session');
+const { body, validationResult } = require('express-validator');
 const app = express();
 const auth = require(__dirname + "/auth.js");
-const register = require(__dirname + "/register.js");
+//const register = require(__dirname + "/register.js");
+
+
+const PORT = process.env.PORT || 8080;
 
 
 app.use(session({
@@ -24,9 +28,10 @@ app.use(cors());
 
 
 app.get('/', function (req, res) {
+    
     if (req.session.loggedin){
         res.redirect('/dashboard')
-    } else{
+    } else {
         fs.readFile(__dirname + "/index.html", function(err, data){
             if (err) {
               res.writeHead(404, {'Content-Type': 'text/html'});
@@ -41,8 +46,16 @@ app.get('/', function (req, res) {
 
 app.get('/dashboard', function (req, res) {
     if (req.session.loggedin){
-        res.send('Zalogowany');
-    } else{
+        fs.readFile(__dirname + "/dashboard.html", function(err, data){
+            if (err) {
+              res.writeHead(404, {'Content-Type': 'text/html'});
+              return res.end("404 Not Found");
+            } 
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(data);
+            return res.end();
+        })
+    } else {
         fs.readFile(__dirname + "/index.html", function(err, data){
             if (err) {
               res.writeHead(404, {'Content-Type': 'text/html'});
@@ -56,15 +69,27 @@ app.get('/dashboard', function (req, res) {
 })
 
 app.get('/login', function (req, res) {
-    fs.readFile(__dirname + "/login.html", function(err, data){
-        if (err) {
-          res.writeHead(404, {'Content-Type': 'text/html'});
-          return res.end("404 Not Found");
-        } 
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.write(data);
-        return res.end();
-    })
+    if (req.session.loggedin){
+        fs.readFile(__dirname + "/dashboard.html", function(err, data){
+            if (err) {
+              res.writeHead(404, {'Content-Type': 'text/html'});
+              return res.end("404 Not Found");
+            } 
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(data);
+            return res.end();
+        })
+    } else {
+        fs.readFile(__dirname + "/login.html", function(err, data){
+            if (err) {
+              res.writeHead(404, {'Content-Type': 'text/html'});
+              return res.end("404 Not Found");
+            } 
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(data);
+            return res.end();
+        })
+    };
 })
 
 app.get('/register', function (req, res) {
@@ -79,11 +104,15 @@ app.get('/register', function (req, res) {
     })
 })
 
-app.post('/auth', function(req, res) {
-    auth(req)
-    .then(result => {
-        console.log(result)
-        res.send({returned: result});
+app.get('/logout', function(req,res) {
+    req.session.loggedin = false
+    req.session.uuid = null
+    res.redirect("/")
+})
+
+app.post('/login', function(req, res) {
+    auth(req,function(result) {
+        res.json({logresult: result})
     })
 });
 
@@ -104,4 +133,4 @@ app.post('/register', function(req, res) {
 });
 
 
-var server = app.listen(process.env.PORT);
+var server = app.listen(PORT);

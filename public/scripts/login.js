@@ -23,7 +23,8 @@ form.addEventListener('submit', (e) =>{
     if (passed)
     {
         let data = {passwd: password.value, email: email.value};
-        fetch('/auth', {
+        console.log(data)
+        fetch('/login', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
@@ -35,26 +36,24 @@ form.addEventListener('submit', (e) =>{
             referrerPolicy: 'no-referrer',
             body: JSON.stringify(data)
         })
-        .then (response => {return response})
-        .then (data => {
-            console.log(data.body.returned)
-        })
-        /*.then((response) => response.json())
+        .then((response) => response.json())
         .then((data) => {
-            console.log('Success:', data);
+            return data.logresult})
+        .then((logresult) => {
+            console.log(logresult)
+            if (logresult == 'success'){
+                window.location.assign('/');
+            }
+            if (logresult == 'emailInvalid'){
+                emailResponse.innerHTML = ("Nie istnieje konto z podanym adresem e-mail!")
+            }
+            if (logresult == 'passwdInvalid'){
+                passwdResponse.innerHTML = ("Niepoprawne hasło!")
+            }
         })
         .catch((error) => {
             console.error('Error:', error);
-        });
-        if (res == 'valid'){
-            window.location.assign('/dashboard');
-        }
-        if (res == 'emailNotValid'){
-            emailResponse.innerHTML = ("Nieprawidłowy adres e-mail!")
-        }
-        if (res == 'passwdNotValid'){
-            passwdResponse.innerHTML = ("Nieprawidłowe Hasło!")
-        }*/
+        })
     }
 })
 
