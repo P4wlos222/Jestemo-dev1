@@ -51,9 +51,9 @@ else if(Cities.length > 0)
     barTxt = "<ul>";
     for(let i = 0; i < Cities.length;i++)
     {
-        barTxt += "<li><a href=''>";
+        barTxt += "<li><a href=''><b>";
         barTxt += Cities[i];
-        barTxt += "</a>";
+        barTxt += "</b></a>";
         if(Tags.length > 0)
         {
             barTxt += "<ul class='bar-tag'>";
