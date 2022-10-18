@@ -5,6 +5,7 @@ const db = require(__dirname + "/dbconnect.js");
 function authenticate(req){
     let email = req.body.email;
 	let password = req.body.passwd;
+    let authresult = 'error'
     console.log(email,password)
     if (email && password){
         db.query('SELECT Password FROM Users WHERE Email = ?',[email],function(err,result){
@@ -17,17 +18,18 @@ function authenticate(req){
                         if (err){return err}
                         req.session.uuid = result
                     });
-                    return 'success';
+                    authresult = 'success';
                 } else {
-                    return 'passwdInvalid'
+                    authresult ='passwdInvalid'
                 }
             } else {
-                return 'emailInvalid'
+                authresult = 'emailInvalid'
             }
         })
     } else {
-        return 'requestInvalid'
+        authresult = 'requestInvalid'
     }
+    return authresult
 }
 
 module.exports = authenticate;
