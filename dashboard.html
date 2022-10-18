@@ -21,7 +21,7 @@
 <body>
     <header class="header">
         <div class="header-content-top">
-            <div class="logo"><a class="logo_a" href="linkstrony.com">EXAMPLE</a></div>
+            <div class="logo">JestemO</div>
             <div class="search">
                 <form>
                     <label class="search-label"></label>
@@ -30,14 +30,8 @@
             </div>
                 <nav>
                     <ul class="nav-ul">
-                        <li><a href="">Home</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
                         <li><a href="">About</a>
-                            <ul>
-                                <li><a href="">About</a></li>
-                                <li><a href="">About</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="">Services</a>
                             <ul>
                                 <li><a href="">About</a></li>
                                 <li><a href="">About</a></li>
@@ -49,14 +43,10 @@
                                 <li><a href="">About</a></li>
                             </ul>
                         </li>
-                        <li><a href="">Contact</a>
-                            <ul>
-                                <li><a href="">About</a></li>
-                                <li><a href="">About</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </nav>
+                
+                <div class="add-article"><a href="add_article.html">Dodaj Artykuł</a></div>
                 <div class="profile-box">
                     <a class="profile-icon" href="profile.html"><img class="profile-icon-img" src="profile.jpg" alt=""></a>
                     <div class="sign-items">
@@ -70,28 +60,14 @@
 
 
     <div class="weather">
-        <span>WARSZAWA 10 C</span>
+        <div id="weather-main" onclick="changeWeatherListVisibility()"><span id="weather-value"></span></div>
+        <ul id="weather-select">
+        </ul>
     </div>
 
     
-    <div id="bar">
-        <ul>
-            <li><a href="">Polska</a>
-                <ul>
-                    <li><a href="">Tech</a></li>
-                    <li><a href="">Tech</a></li>
-                    <li><a href="">Tech</a></li>
-                </ul>
-            </li>
-            <li><a href="">Polska</a>
-                <ul>
-                    <li><a href="">Tech</a></li>
-                    <li><a href="">Tech</a></li>
-                    <li><a href="">Tech</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+    
+    <div id="bar"></div>
 
     <div class="feed">
         <div class="feed-obj">
@@ -125,6 +101,8 @@
     </div>
         
 
-
-    <script src="header-10.js"></script>
+      
+    <script src="weather.js"></script>
+    <script src="article.js"></script>
+    <script src="tags.js"></script>
 </body>
