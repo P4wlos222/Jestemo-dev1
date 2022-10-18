@@ -112,6 +112,7 @@ app.get('/logout', function(req,res) {
 
 app.post('/login', function(req, res) {
     auth(req,function(result) {
+        console.log('calledback')
         res.json({logresult: result})
     })
 });
