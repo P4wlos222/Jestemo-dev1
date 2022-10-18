@@ -23,7 +23,6 @@ form.addEventListener('submit', (e) =>{
     if (passed)
     {
         let data = {passwd: password.value, email: email.value};
-        console.log(data)
         fetch('/login', {
             method: 'POST',
             mode: 'cors',
@@ -40,7 +39,6 @@ form.addEventListener('submit', (e) =>{
         .then((data) => {
             return data.logresult})
         .then((logresult) => {
-            console.log(logresult)
             if (logresult == 'success'){
                 window.location.assign('/');
             }
