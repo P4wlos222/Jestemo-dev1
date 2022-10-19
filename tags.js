@@ -2,11 +2,11 @@
 Polska = ["Polska",0];
 Cities = ["Warszawa","Kołobrzeg"];
 Tags = ["Tech","Polityka","Gospodarka"];
-//--------Right-Bar----------
+
 if(document.getElementById("bar") != null)
 {
+//--------Right-Bar----------
 var barTxt = "";
-
 if(Polska[1] == 1)
 {  
     barTxt = "<ul><li><a href=''>POLSKA</a>";
