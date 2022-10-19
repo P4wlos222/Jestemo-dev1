@@ -1,7 +1,7 @@
 //data
 var myName = "Maciej Piątkowski";
 var desc = "Hej tu ja";
-var imgHref = "profile.jpg"
+var imgHref = "styles/profile.jpg"
 
 //-------Name and desc-------
 var myNameANDDesc = myName + "<br><span id='desc'>" + desc + "</span>"
