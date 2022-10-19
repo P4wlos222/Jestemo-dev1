@@ -1,43 +1,33 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>JestemO - Logowanie</title>
-        <link rel="stylesheet" href="styles/index_styles.css">
         <meta charset="UTF-8">
+
+        <title>JestemO - Logowanie</title>
+
+        <link rel="stylesheet" href="styles/style-login.css">
+        <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
         <script src="scripts/login.js" type="text/javascript" defer></script>
     </head>
     <body>
-        <div id="holder">
-            <div id="header">
-                <a href="/" style="display:block">
-                    <div id="homebutton">
-                        home
-                    </div>
-                </a>
-                
-                <div id="logo">
-                    JestemO
+        <div id="login-box">
+            <a id="login-logo" href="dashboard.html">
+                JestemO
+            </a>
+            <div id="login-container">    
+                <div id="logform">
+                    <form action="/" method="post">
+                        <input id="email" name="email" placeholder="Adres e-mail" type="text"><br>
+                        <label class="response" id="emailresponse"></label>
+                        <input id="passwd" name="passwd" placeholder="Hasło" type="password"><br>
+                        <label class="response" id="passwdresponse"></label>
+                        <input type="submit" value="Zaloguj się" id="login-button">
+                    </form>
+                    <p>lub</p>
+                    <a href="register.html" id="new-account-button">Zarejestruj się</a>
                 </div>
-                
-                <a href="/login" style="display:block">
-                    <div id="loginbutton">
-                        Zaloguj się
-                    </div>
-                </a>             
-            </div>
-            <div id="navbar">
-
-            </div>
-            <div id="logform">
-                <form action="/" method="post">
-                    <input id="email" name="email" placeholder="Adres e-mail" type="text"><br>
-                    <label class="response" id="emailresponse"></label><br>
-                    <input id="passwd" name="passwd" placeholder="Hasło" type="password"><br>
-                    <label class="response" id="passwdresponse"></label><br>
-                    <input type="submit">
-                </form>
-                <a href="/register">Zarejestruj się</a>
             </div>
         </div>
+        
     </body>
 </html>
