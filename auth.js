@@ -1,6 +1,6 @@
-const bcrypt = require("bcryptjs");
-const e = require("express");
 const db = require(__dirname + "/dbconnect.js");
+const bcrypt = require("bcryptjs");
+
 
 function authenticate(req,callback){
     let email = req.body.email;
@@ -28,5 +28,6 @@ function authenticate(req,callback){
         callback('requestInvalid')
     }
 }
+
 
 module.exports = authenticate;

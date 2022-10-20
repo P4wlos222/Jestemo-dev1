@@ -17,13 +17,15 @@
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/style-2.css">
 
-    <script src="scripts/header-10.js" defer></script>
+    <script src="scripts/weather.js" defer></script>
+    <script src="scripts/article.js" defer></script>
+    <script src="scripts/tags.js" defer></script>
 </head>
 
 <body>
     <header class="header">
         <div class="header-content-top">
-            <div class="logo"><a class="logo_a" href="/">EXAMPLE</a></div>
+            <div class="logo">JestemO</div>
             <div class="search">
                 <form>
                     <label class="search-label"></label>
@@ -32,14 +34,8 @@
             </div>
                 <nav>
                     <ul class="nav-ul">
-                        <li><a href="">Home</a></li>
+                        <li><a href="/dashboard">Dashboard</a></li>
                         <li><a href="">About</a>
-                            <ul>
-                                <li><a href="">About</a></li>
-                                <li><a href="">About</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="">Services</a>
                             <ul>
                                 <li><a href="">About</a></li>
                                 <li><a href="">About</a></li>
@@ -51,20 +47,18 @@
                                 <li><a href="">About</a></li>
                             </ul>
                         </li>
-                        <li><a href="">Contact</a>
-                            <ul>
-                                <li><a href="">About</a></li>
-                                <li><a href="">About</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </nav>
+                
+                <div class="add-article"><a href="/add_article">Dodaj Artykuł</a></div>
                 <div class="profile-box">
-                    <a class="log_out" href="/logout">Log out</a>
-                    <a class="profile-icon" href="/profile"><img class="profile-icon-img" src="images/profile.jpg" alt=""></a>
+                    <a class="profile-icon" href="/profile"><img class="profile-icon-img" src="styles/profile.jpg" alt=""></a>
                     <div class="sign-items">
                         <a class="sign_up" href="/register">Sign up</a>
                         <a class="sign_in"  href="/login">Sign in</a>
+                    </div>
+                    <div class="logout-items">
+                        <a class="sign_in"  href="/logout">Log Out</a>
                     </div>
                 </div>
         </div>
@@ -73,28 +67,14 @@
 
 
     <div class="weather">
-        <span>WARSZAWA 10 C</span>
+        <div id="weather-main" onclick="changeWeatherListVisibility()"><span id="weather-value"></span></div>
+        <ul id="weather-select">
+        </ul>
     </div>
 
     
-    <div id="bar">
-        <ul>
-            <li><a href="">Polska</a>
-                <ul>
-                    <li><a href="">Tech</a></li>
-                    <li><a href="">Tech</a></li>
-                    <li><a href="">Tech</a></li>
-                </ul>
-            </li>
-            <li><a href="">Polska</a>
-                <ul>
-                    <li><a href="">Tech</a></li>
-                    <li><a href="">Tech</a></li>
-                    <li><a href="">Tech</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+    
+    <div id="bar"></div>
 
     <div class="feed">
         <div class="feed-obj">
@@ -126,5 +106,5 @@
             <span class="tags">TAGI: <a href="">Tag1</a>, <a href="">tag2</a></span>
         </div>
     </div>
-        
+    <script defer>document.getElementsByClassName("profile-icon")[0].style.display = "block"; document.getElementsByClassName("sign-items")[0].style.display = "none"; document.getElementsByClassName("logout-items")[0].style.display = "block"</script>
 </body>

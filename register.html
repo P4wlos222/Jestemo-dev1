@@ -7,22 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <meta http-equiv="refresh" content="1"> -->
     
-    <title>REGISTER</title>
+    <title>JestemO - Rejestracja</title>
 
     <link rel="icon" href="">
 
     <!--STYLE-->
-    <link rel="stylesheet" href="style-login.css">
-    <script src="header-10.js"></script>
+    <link rel="stylesheet" href="styles/style-login.css">
+    <script src="scripts/header-10.js" defer></script>
+    <script src="scripts/register.js" defer></script>
 </head>
 
 <body>
-        <div class="login-container">
-            <input type="text" placeholder="Name">
-            <input type="text" placeholder="Email address">
-            <input type="password" placeholder="Password">
-            <input type="password" placeholder="Password">
-            <button class="new-account-button">Create new Account</button>
+    <div class="login-container">
+        <div id="regform">
+            <form action="/" method="post">
+                <input id="email" name="email" placeholder="Adres e-mail" type="text"><br>
+                <label class="response" id="emailresponse"></label><br>
+                <input id="passwd" name="passwd" placeholder="Hasło" type="password">
+                <button type="button" onclick="togglePasswdVisibility()">EyeIcon</button><br>
+                <label class="response" id="passwdresponse"></label><br>
+                <input id="reppasswd" name="reppasswd" placeholder="Powtórz hasło" type="password">
+                <button type="button" onclick="toggleRepPasswdVisibility()">EyeIcon</button><br>
+                <label class="response" id="reppasswdresponse"></label><br>
+                <input id="firstname" name="firstname" placeholder="Imię" type="text"><br>
+                <label class="response" id="firstnameresponse"></label><br>
+                <input id="lastname" name="lastname" placeholder="Nazwisko" type="text"><br>
+                <label class="response" id="lastnameresponse"></label><br>
+                <input type="submit" value="Zarejestruj się" id="new-account-button">
+            </form>
         </div>
+    </div>
     
 </body>
