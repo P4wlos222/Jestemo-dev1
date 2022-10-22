@@ -92,7 +92,7 @@ form.addEventListener('submit', (e) =>{
                 //window.location.assign('/');
                 passwdResponse.innerHTML = ("success!")
             }
-            if (data.regresult == 'duplicateEmail'){
+            if (data.regresult == 'emailAlreadyUsed'){
                 emailResponse.innerHTML = ("Konto o podanym adresie e-mail już istnieje!")
             }
             if (data.regresult == 'error'){

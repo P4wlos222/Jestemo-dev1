@@ -7,6 +7,8 @@ const { body, validationResult } = require('express-validator');
 const app = express();
 const auth = require(__dirname + "/auth.js");
 const register = require(__dirname + "/appenduser.js");
+const getPost = require(__dirname + "/getpost.js")
+const createPost = require(__dirname + "/createpost.js")
 
 
 const PORT = process.env.PORT || 8080;
@@ -134,6 +136,50 @@ app.get('/logout', function(req,res) {
     res.redirect("/")
 })
 
+app.get('/add_post', (req,res) => {
+    if (req.session.loggedin){
+        fs.readFile(__dirname + "/add_post.html", function(err, data){
+            if (err) {
+              res.writeHead(404, {'Content-Type': 'text/html'});
+              return res.end("404 Not Found");
+            } 
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(data);
+            return res.end();
+        })
+    } else {
+        fs.readFile(__dirname + "/login.html", function(err, data){
+            if (err) {
+              res.writeHead(404, {'Content-Type': 'text/html'});
+              return res.end("404 Not Found");
+            } 
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.write(data);
+            return res.end();
+        })
+    };
+})
+
+app.get('/post', (req,res) =>{
+    getPost('post1.xml', (result) => {
+        res.json(JSON.stringify(result))
+    })
+})
+
+
+app.post('/create_post',
+    body('postContent').trim().isLength({min: 1, max: 1200}),
+
+    (req, res) => {
+    const errors = validationResult(req)
+    if (errors.isEmpty()) {
+        createPost(req, (result) => {
+            console.log(result)
+            res.json({"logresult": result})
+        })
+    }
+});
+
 app.post('/login',
     body('email').isEmail().normalizeEmail().isLength({min: undefined, max: 255}),
 
@@ -151,7 +197,7 @@ app.post('/login',
 
 app.post('/register',
     body('email').isEmail().normalizeEmail().isLength({min: undefined, max: 255}),
-    body('passwd').isStrongPassword({minsymbols: 0}).isLength({min: undefined, max: 255}), //isStrongPassword()
+    body('passwd').isStrongPassword({minSymbols: 0}).isLength({min: undefined, max: 255}), //isStrongPassword()
     body('firstName').trim(),
     body('lastName').trim(),
 

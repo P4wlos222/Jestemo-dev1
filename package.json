@@ -5,7 +5,8 @@
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "express-validator": "^6.14.2",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "xml2js": "^0.4.23"
   },
   "name": "http-nodejs",
   "version": "1.0.0",

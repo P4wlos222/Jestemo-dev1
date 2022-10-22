@@ -1,40 +1,28 @@
-const form = document.querySelector('#logform')
+const form = document.querySelector('#postform')
 
-const email = document.querySelector('#email')
-const password = document.querySelector('#passwd')
+const postcontent = document.querySelector('#postContent')
+const image = document.querySelector('#imgInput')
 
-const emailResponse = document.querySelector('#emailresponse')
-const passwdResponse = document.querySelector('#passwdresponse')
+const contentResponse = document.querySelector('#contentResponse')
+const imageResponse = document.querySelector('#imageResponse')
 
-function togglePasswdVisibility() {
-    var passwd = document.getElementById("passwd");
-    if (passwd.type === "password") {
-      passwd.type = "text";
-    } else {
-      passwd.type = "password";
-    }
-}
 
 form.addEventListener('submit', (e) =>{
     e.preventDefault()
-    emailResponse.innerHTML = ("")
-    passwdResponse.innerHTML = ("")
+    contentResponse.innerHTML = ("")
+    imageResponse.innerHTML = ("")
+    console.log(postcontent.value)
     let passed = true
-    if (email.value === '' || email.value == null)
+    if (postcontent.value === '' || postcontent.value == null)
     {
-        emailResponse.innerHTML = ("Wpisz adres e-mail!")
-        passed = false
-    }
-    if (password.value === '' || password.value == null)
-    {
-        passwdResponse.innerHTML = ("Wpisz hasło!")
+        contentResponse.innerHTML = ("Twój post nie ma treści!")
         passed = false
     }
 
     if (passed)
     {
-        let data = {passwd: password.value, email: email.value};
-        fetch('/login', {
+        let data = {postContent: postcontent.value};
+        fetch('/create_post', {
             method: 'POST',
             mode: 'cors',
             cache: 'no-cache',
