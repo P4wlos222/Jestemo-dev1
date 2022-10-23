@@ -7,7 +7,7 @@ const contentResponse = document.querySelector('#contentResponse')
 const imageResponse = document.querySelector('#imageResponse')
 
 
-function submitNewArticle(){
+form.addEventListener('submit', (e) =>{
     contentResponse.innerHTML = ("")
     imageResponse.innerHTML = ("")
     console.log(postcontent.value)
@@ -57,6 +57,6 @@ function submitNewArticle(){
             console.error('Error:', error);
         })
     }
-}
+})
     
 
