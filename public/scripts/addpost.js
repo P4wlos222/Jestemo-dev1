@@ -8,6 +8,7 @@ const imageResponse = document.querySelector('#imageResponse')
 
 
 form.addEventListener('submit', (e) =>{
+    e.preventDefault()
     contentResponse.innerHTML = ("")
     imageResponse.innerHTML = ("")
     console.log(postcontent.value)
