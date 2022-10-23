@@ -10,27 +10,27 @@ var post5 = [1,"styles/profile.jpg","Ignacy Michalski","2022.02.8",null,"Nie pol
 var post6 = [1,"styles/profile.jpg","Ignacy Michalski","2022.02.7",null,"Właśnie otworzyłem nowy sklep wędkarski na ulicy Spokojnej. Zapraszam!"];
 
 //crate post
-function createPost()
+function createPost(post)
 {
     let postTxt = "";
-    let authorProfileLink = "LINKSTRONY" + post1[0];
+    let authorProfileLink = "LINKSTRONY" + post[0];
     postTxt += "<div class='post'><a href=''";
     postTxt += authorProfileLink;
     postTxt += "'><div class='post-author'><div class='profile-icon'><img class='profile-icon-img' src='";
-    postTxt += post1[1];
+    postTxt += post[1];
     postTxt += "'><div class='post-author-name'>";
-    postTxt += post1[2]
+    postTxt += post[2]
     postTxt += "</div></div></div></a><div class='post-data'>";
-    postTxt += post1[3]
+    postTxt += post[3]
     postTxt += "</div><div class='post-img'>"
     if(post1[4] != null)
     {
         postTxt += "<img src='";
-        postTxt += post1[4];
+        postTxt += post[4];
         postTxt += "'>"
     }
     postTxt += "</div><hr><div class='post-content'><div class='post-text'>";
-    postTxt += post1[5];
+    postTxt += post[5];
     postTxt += "</div></div><br><div class='post-options'><div class='share'>Udostępnij</div></div></div>";
 
     return postTxt;
@@ -43,4 +43,5 @@ postsTxt += createPost(post3);
 postsTxt += createPost(post4);
 postsTxt += createPost(post5);
 postsTxt += createPost(post6);
+console.log(postsTxt)
 document.getElementById("feed").innerHTML = postsTxt;
