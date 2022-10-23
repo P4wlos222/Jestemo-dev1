@@ -43,5 +43,4 @@ postsTxt += createPost(post3);
 postsTxt += createPost(post4);
 postsTxt += createPost(post5);
 postsTxt += createPost(post6);
-console.log(postsTxt)
 document.getElementById("feed").innerHTML = postsTxt;
