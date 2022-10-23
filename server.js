@@ -171,8 +171,7 @@ app.get('/getpost', (req,res) => {
 
 app.get('/user', (req,res) => {
     getUser(req.query.uuid, (result) => {
-        res.json(JSON.stringify(result))
-        console.log(typeof result)
+        res.json(result)
     })
 })
 
@@ -191,7 +190,6 @@ app.post('/create_post',
     if (errors.isEmpty()) {
         if (req.session.loggedin) {
             createPost(req, (result) => {
-                console.log(result)
                 res.json({postresult: result})
             })
         } else {

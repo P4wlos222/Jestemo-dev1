@@ -22,8 +22,8 @@ function register(req,callback){
                 if (err) throw err;
             });
         
-            db.query('INSERT INTO Users(UUID,Email,Password,FirstName,LastName) VALUES (UUID(),?,?,?,?)',
-            [email,hashedPassword,firstName,lastName],
+            db.query('INSERT INTO Users(UUID,Email,Password,FirstName,LastName,DisplayName) VALUES (UUID(),?,?,?,?)',
+            [email,hashedPassword,firstName,lastName,firstName+" "+lastName],
             function(error){
                 if (error) throw error;
             });
