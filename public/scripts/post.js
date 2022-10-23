@@ -1,94 +1,39 @@
-var user1
+var post1
 var postsTxt = "";
-
-
-
-fetch('/feedme', {
-    method: 'POST',
-    mode: 'cors',
-    cache: 'no-cache',
-    credentials: 'same-origin',
-    headers: {
-    'Content-Type': 'application/json'
-    },
-    redirect: 'follow',
-    referrerPolicy: 'no-referrer',
-})
-.then((response) => response.json())
-.then((json) => {
-    for (let i = 0; i < 4; i++)
-    {
-        fetch('/getpost?post='+json[i], {
-            method: 'GET',
-            mode: 'cors',
-            cache: 'no-cache',
-            credentials: 'same-origin',
-            headers: {
-            'Content-Type': 'application/json'
-            },
-            redirect: 'follow',
-            referrerPolicy: 'no-referrer',
-        })
-        .then((response) => response.json())
-        .then((json) => {
-            fetch('/user?uuid='+json.root.author, {
-                method: 'GET',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'same-origin',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                redirect: 'follow',
-                referrerPolicy: 'no-referrer',
-            })
-            .then((response) => response.json())
-            .then((ujson) => {
-                displayName = ujson.DisplayName
-                var newDate = new Date()
-                newDate.setTime(json.root.date);
-                dateString = newDate.toUTCString();
-                user1 = [1,"styles/profile.jpg",displayName,dateString,null,json.root.content];
-                postsTxt += createPost(user1);
-                document.getElementById("feed").innerHTML = postsTxt;
-                //console.log(postsTxt);
-            })
-            
-        })
-    }
-})
-
 
 //userId,authorImgHref,authorName,postData,imgHref,postContent
 
-//user1 = [1,"styles/profile.jpg","Maciej Piątkowski","2022.02.12","styles/hp.jpg","lorem ipsum sadinfffffff fffffffffff fffffffffffffffffffffff ffffffffffffffffffffffffffffff ffffffffffff fffffffffffffffffffffffffffffffffffffffffffffffffffffff fffffffffffffffffffffff ffffffffffffffffffffff ffffffffffffffffffffffffffff ffffffffffffffffffffffffff"];
-
+post1 = [1,"styles/profile.jpg","Wojciech Pociecha","2022.02.12",null,"Wybory na Prezydenta wygrał Jan Kowalski."];
+post2 = [1,"styles/profile.jpg","Ignacy Michalski","2022.02.12",null,"2020.06.01 na placu w centrum miasta odbędzie się święto z okazji 123 rocznicy nadania praw miejskich."];
 
 //crate post
 function createPost()
 {
     let postTxt = "";
-    let authorProfileLink = "LINKSTRONY" + user1[0];
+    let authorProfileLink = "LINKSTRONY" + post1[0];
     postTxt += "<div class='post'><a href=''";
     postTxt += authorProfileLink;
     postTxt += "'><div class='post-author'><div class='profile-icon'><img class='profile-icon-img' src='";
-    postTxt += user1[1];
+    postTxt += post1[1];
     postTxt += "'><div class='post-author-name'>";
-    postTxt += user1[2]
+    postTxt += post1[2]
     postTxt += "</div></div></div></a><div class='post-data'>";
-    postTxt += user1[3]
+    postTxt += post1[3]
     postTxt += "</div><div class='post-img'>"
-    if(user1[4] != null)
+    if(post1[4] != null)
     {
         postTxt += "<img src='";
-        postTxt += user1[4];
+        postTxt += post1[4];
         postTxt += "'>"
     }
     postTxt += "</div><hr><div class='post-content'><div class='post-text'>";
-    postTxt += user1[5];
+    postTxt += post1[5];
     postTxt += "</div></div><br><div class='post-options'><div class='share'>Udostępnij</div></div></div>";
 
     return postTxt;
 
 }
 
+postsTxt += createPost(post1);
+postsTxt += createPost(post2);
+document.getElementById("feed").innerHTML = postsTxt;
