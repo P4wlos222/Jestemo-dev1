@@ -36,19 +36,23 @@ form.addEventListener('submit', (e) =>{
         })
         .then((response) => response.json())
         .then((data) => {
-            if (data.logresult == 'success'){
+            if (data.postresult == 'success'){
                 window.location.assign(window.location);
             }
-            if (data.logresult == 'emailInvalid'){
+            if (data.postresult == 'emailInvalid'){
                 emailResponse.innerHTML = ("Nie istnieje konto z podanym adresem e-mail!")
             }
-            if (data.logresult == 'passwdInvalid'){
+            if (data.postresult == 'passwdInvalid'){
                 passwdResponse.innerHTML = ("Niepoprawne hasło!")
             }
-            if (data.logresult == 'error'){
+            if (data.postresult == 'error'){
                 emailResponse.innerHTML = ("Niepoprawny format adresu e-mail!")
                 console.log(data.errors)
             } 
+            if (data.postresult == "notLoggedIn")
+            {
+                window.location.assign(window.location)
+            }
         })
         .catch((error) => {
             console.error('Error:', error);

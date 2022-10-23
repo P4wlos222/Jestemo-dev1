@@ -4,11 +4,13 @@ const cors = require('cors');
 const express = require('express');
 const session = require('express-session');
 const { body, validationResult } = require('express-validator');
+const getFeed = require('./feeder');
 const app = express();
 const auth = require(__dirname + "/auth.js");
 const register = require(__dirname + "/appenduser.js");
 const getPost = require(__dirname + "/getpost.js")
 const createPost = require(__dirname + "/createpost.js")
+const feeder = require(__dirname + "/feeder.js")
 
 
 const PORT = process.env.PORT || 8080;
@@ -160,12 +162,17 @@ app.get('/add_post', (req,res) => {
     };
 })
 
-app.get('/post', (req,res) =>{
-    getPost('post1.xml', (result) => {
-        res.json(JSON.stringify(result))
+app.post('/getpost', (req,res) => {
+    getPost(req.query.post, (result) => {
+        res.json(result)
     })
 })
 
+app.post('/feedme', (req,res) => {
+    getFeed((result) => {
+        res.json(result)
+    })
+})
 
 app.post('/create_post',
     body('postContent').trim().isLength({min: 1, max: 1200}),
@@ -173,10 +180,15 @@ app.post('/create_post',
     (req, res) => {
     const errors = validationResult(req)
     if (errors.isEmpty()) {
-        createPost(req, (result) => {
-            console.log(result)
-            res.json({"logresult": result})
-        })
+        if (req.session.loggedin) {
+            createPost(req, (result) => {
+                console.log(result)
+                res.json({postresult: result})
+            })
+        } else {
+            res.json({postresult: "notLoggedIn"})
+        }
+        
     }
 });
 

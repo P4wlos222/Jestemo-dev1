@@ -7,7 +7,7 @@ function createPost(req,callback){
     let content = req.body.postContent
     let user = req.session.uuid
 
-    let dataobj = {author: user, content: content, location: null, likes: 0, tags: null, images: null}
+    let dataobj = {author: user, date: Date.now(),content: content, location: null, likes: 0, tags: null, images: null}
     var builder = new xml2js.Builder();
     let data = builder.buildObject(dataobj);
 
