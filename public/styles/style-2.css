@@ -47,44 +47,14 @@ body
     margin-bottom: 5px;
 }
 
-.top-img-div
-{
-    width: 100%;
-    display: block;
-    text-align: center;
-}
-.top-img
-{
-    max-height: 300px;
-    max-width: 100%;
-    min-height:100px;
-
-}
-#topic
-{
-    color:black;
-    font-size: 50px;
-    text-align: center;
-}
-#article
-{
-    align-items: center;
-    text-align: justify;
-    display: block;
-    margin: 0px 320px 0px 200px;
-}
-#frame-txt
-{
-    width: 100%;
-}
 #bar
 {
     position:sticky;
     width:250px;
-    background-color: #ebf4f3;
     top:70px;
     float:right;
     right: 25px;
+    background-color: #ebf4f3;
     border:solid #D1F9F6 2px;
     border-radius: 25px;
     color:gray;
@@ -146,4 +116,108 @@ body
 .feed-a
 {
     font-size: 30px;
+}
+
+
+#feed
+{
+    align-items: center;
+    text-align: justify;
+    display: block;
+    position: absolute;
+    width: 600px;
+    left:calc(50% - 400px);
+}
+
+.post
+{
+    width: 100%;
+    border-radius: 5px;
+    border: solid #f1fffe 2px;
+    background-color:#E1FAF8;
+    margin: auto;
+    margin-bottom: 30px; 
+    box-shadow:0 4px 8px 0 #c0fffb;
+}
+.post-img
+{
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+}
+.post-img > img
+{
+    max-height: 300px;
+    max-width: 100%;
+    min-height: 100px;
+
+}
+.post > hr
+{
+    width: 90%;
+    margin: auto;
+    border: solid #f1fffe 1px;
+    margin-top: 10px;
+}
+.post-content
+{
+    width: 90%;
+    margin: auto;
+    padding-top: 10px;
+}
+.post-author
+{
+    font-size:larger;
+    margin-bottom: 5px;
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+}
+.post-author > .profile-icon
+{
+    white-space:nowrap;
+}
+.post-author-name
+{
+    display: block;
+    margin-left:45px;
+    margin-top: -33px;
+}
+.post-tags
+{
+    color: gray;
+    width: 90%;
+    margin: auto;
+    margin-top: 10px;
+}
+.post-tags a
+{
+    color: gray;
+}
+.post-data
+{
+    width: 90%;
+    margin: auto;
+    text-align: right;
+    font-size: small;
+}
+.post-options
+{
+    width: 90%;
+    text-align: right;
+    margin: auto;
+    margin-bottom: 5px;
+}
+.post-options div
+{
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.post-options div:hover
+{
+    background-color: black;
+    color:white;
+    background-color: #464687;
+    cursor: pointer;
 }

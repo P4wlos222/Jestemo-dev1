@@ -1,24 +1,53 @@
 body{
-    
     background-color: #E1FAF8;
+    font-family: 'Lato', sans-serif;
 }
-.form-container-left
+
+#form-container-left,#form-container-right
 {
+    background-color: #ebf4f3;
+    border:solid #D1F9F6 2px;
+    border-radius: 25px;
+    color:gray;
     text-align: center;
-    width: 300px;
-    background-color: red;
-    display:block;
     position: absolute;
+    display:block;
+    width: 300px;
+    padding-top: 20px;
+    top:100px;
+}
+#form-container-left
+{
     left:calc(50% - 320px);
-    top:150px;
 }
-.form-container-right
+#form-container-right
 {
-    text-align: center;
-    width: 300px;
-    background-color: red;
-    display:block;
-    position: absolute;
     left:calc(50% + 20px);
-    top:150px;
 }
+
+#cancel-button,#submit-button
+{
+    color: #fff;
+    background-color: #5968da;
+    width:max-content;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+    position: sticky;
+    top:50px;
+}
+#cancel-button
+{
+    left:calc(50% + 140px);
+}
+#submit-button
+{
+    left:calc(50% - 210px);
+}
+#cancel-button:hover,#submit-button:hover
+{
+    cursor: pointer;
+    background-color: #93a0ff;
+}
+

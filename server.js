@@ -9,6 +9,7 @@ const app = express();
 const auth = require(__dirname + "/auth.js");
 const register = require(__dirname + "/appenduser.js");
 const getPost = require(__dirname + "/getpost.js")
+const getUser = require(__dirname + "/getuser.js")
 const createPost = require(__dirname + "/createpost.js")
 const feeder = require(__dirname + "/feeder.js")
 
@@ -162,9 +163,16 @@ app.get('/add_post', (req,res) => {
     };
 })
 
-app.post('/getpost', (req,res) => {
+app.get('/getpost', (req,res) => {
     getPost(req.query.post, (result) => {
         res.json(result)
+    })
+})
+
+app.get('/user', (req,res) => {
+    getUser(req.query.uuid, (result) => {
+        res.json(JSON.stringify(result))
+        console.log(typeof result)
     })
 })
 
@@ -173,6 +181,7 @@ app.post('/feedme', (req,res) => {
         res.json(result)
     })
 })
+
 
 app.post('/create_post',
     body('postContent').trim().isLength({min: 1, max: 1200}),

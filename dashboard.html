@@ -3,12 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <meta http-equiv="refresh" content="1"> -->
-    <!--TITLE-->
-    <title>JestemO - Portal społecznościowy obywatela</title>
+    
+    <title>Example</title>
 
     <!--ICON-->
     <link rel="icon" href="">
@@ -16,10 +15,6 @@
     <!--STYLE-->
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/style-2.css">
-
-    <script src="scripts/weather.js" defer></script>
-    <script src="scripts/article.js" defer></script>
-    <script src="scripts/tags.js" defer></script>
 </head>
 
 <body>
@@ -34,31 +29,22 @@
             </div>
                 <nav>
                     <ul class="nav-ul">
-                        <li><a href="/dashboard">Dashboard</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
                         <li><a href="">About</a>
                             <ul>
-                                <li><a href="">About</a></li>
-                                <li><a href="">About</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="">Hire us</a>
-                            <ul>
-                                <li><a href="">About</a></li>
-                                <li><a href="">About</a></li>
+                                <li><a href="">O Projekcie</a></li>
+                                <li><a href="">O Nas</a></li>
                             </ul>
                         </li>
                     </ul>
                 </nav>
                 
-                <div class="add-article"><a href="/add_post">Dodaj Artykuł</a></div>
+                <div class="add-article"><a href="add_article.html">Dodaj Artykuł</a></div>
                 <div class="profile-box">
-                    <a class="profile-icon" href="/profile"><img class="profile-icon-img" src="styles/profile.jpg" alt=""></a>
+                    <a class="profile-icon" href="profile.html"><img class="profile-icon-img" src="styles/profile.jpg" alt=""></a>
                     <div class="sign-items">
-                        <a class="sign_up" href="/register">Sign up</a>
-                        <a class="sign_in"  href="/login">Sign in</a>
-                    </div>
-                    <div class="logout-items">
-                        <a class="sign_in"  href="/logout">Log Out</a>
+                        <a class="sign_up" href="register.html">Rejstruj</a>
+                        <a class="sign_in"  href="login.html">Loguj</a>
                     </div>
                 </div>
         </div>
@@ -72,39 +58,12 @@
         </ul>
     </div>
 
-    
-    
     <div id="bar"></div>
 
-    <div class="feed">
-        <div class="feed-obj">
-            <a class="feed-a" href="">Article nr x</a><br>
-            <span class="tags">TAGI: <a href="">Tag1</a>, <a href="">tag2</a></span>
-        </div>
-        <div class="feed-obj">
-            <a class="feed-a" href="">Article nr x</a><br>
-            <span class="tags">TAGI: <a href="">Tag1</a>, <a href="">tag2</a></span>
-        </div>
-        <div class="feed-obj">
-            <a class="feed-a" href="">Article nr x</a><br>
-            <span class="tags">TAGI: <a href="">Tag1</a>, <a href="">tag2</a></span>
-        </div>
-        <div class="feed-obj">
-            <a class="feed-a" href="">Article nr x</a><br>
-            <span class="tags">TAGI: <a href="">Tag1</a>, <a href="">tag2</a></span>
-        </div>
-        <div class="feed-obj">
-            <a class="feed-a" href="">Article nr x</a><br>
-            <span class="tags">TAGI: <a href="">Tag1</a>, <a href="">tag2</a></span>
-        </div>
-        <div class="feed-obj">
-            <a class="feed-a" href="">Article nr x</a><br>
-            <span class="tags">TAGI: <a href="">Tag1</a>, <a href="">tag2</a></span>
-        </div>
-        <div class="feed-obj">
-            <a class="feed-a" href="">Article nr x</a><br>
-            <span class="tags">TAGI: <a href="">Tag1</a>, <a href="">tag2</a></span>
-        </div>
+    <div id="feed">
     </div>
-    <script defer>document.getElementsByClassName("profile-icon")[0].style.display = "block"; document.getElementsByClassName("sign-items")[0].style.display = "none"; document.getElementsByClassName("logout-items")[0].style.display = "block"</script>
+        
+<script src="scripts/weather.js"></script>
+<script src="scripts/post.js"></script>
+<script src="scripts/tags.js"></script>
 </body>
