@@ -8,6 +8,7 @@ function register(req,callback){
 	let password = req.body.passwd;
     let firstName = req.body.firstName
     let lastName = req.body.lastName
+    let displayName = firstName+" "+lastName
 
     db.query('SELECT * FROM Users WHERE email=?',[email], (error,result) =>
     {
@@ -23,7 +24,7 @@ function register(req,callback){
             });
         
             db.query('INSERT INTO Users(UUID,Email,Password,FirstName,LastName,DisplayName) VALUES (UUID(),?,?,?,?)',
-            [email,hashedPassword,firstName,lastName,firstName+" "+lastName],
+            [email,hashedPassword,firstName,lastName,displayName],
             function(error){
                 if (error) throw error;
             });
