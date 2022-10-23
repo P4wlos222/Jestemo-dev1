@@ -23,7 +23,7 @@ function register(req,callback){
                 if (err) throw err;
             });
         
-            db.query('INSERT INTO Users(UUID,Email,Password,FirstName,LastName,DisplayName) VALUES (UUID(),?,?,?,?)',
+            db.query('INSERT INTO Users(UUID,Email,Password,FirstName,LastName,DisplayName) VALUES (UUID(),?,?,?,?,?)',
             [email,hashedPassword,firstName,lastName,displayName],
             function(error){
                 if (error) throw error;
