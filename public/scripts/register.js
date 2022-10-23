@@ -89,8 +89,8 @@ form.addEventListener('submit', (e) =>{
         .then((response) => response.json())
         .then((data) => {
             if (data.regresult == 'success'){
-                //window.location.assign('/');
-                passwdResponse.innerHTML = ("success!")
+                window.location.assign('/');
+                //passwdResponse.innerHTML = ("success!")
             }
             if (data.regresult == 'emailAlreadyUsed'){
                 emailResponse.innerHTML = ("Konto o podanym adresie e-mail już istnieje!")
