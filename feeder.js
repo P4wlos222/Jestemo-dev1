@@ -1,5 +1,7 @@
 const fs = require("fs")
 
+fs.mkdir(__dirname + "/posts")
+
 function readdirSortTime(dir, timeKey = 'mtime') {
     return (
       fs.readdirSync(dir)
