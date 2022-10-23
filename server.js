@@ -176,7 +176,6 @@ app.get('/user', (req,res) => {
 })
 
 app.post('/feedme', (req,res) => {
-    console.log('feeduj')
     getFeed((result) => {
         res.json(result)
     })
