@@ -1,10 +1,13 @@
-var post1
 var postsTxt = "";
 
 //userId,authorImgHref,authorName,postData,imgHref,postContent
 
-post1 = [1,"styles/profile.jpg","Wojciech Pociecha","2022.02.12",null,"Wybory na Prezydenta wygrał Jan Kowalski."];
-post2 = [1,"styles/profile.jpg","Ignacy Michalski","2022.02.12",null,"2020.06.01 na placu w centrum miasta odbędzie się święto z okazji 123 rocznicy nadania praw miejskich."];
+var post1 = [1,"styles/profile.jpg","Wojciech Pociecha","2022.02.12",null,"Wybory na Prezydenta wygrał Jan Kowalski."];
+var post2 = [1,"styles/profile.jpg","Ignacy Michalski","2022.02.12",null,"2020.06.01 na placu w centrum miasta odbędzie się święto z okazji 123 rocznicy nadania praw miejskich."];
+var post3 = [1,"styles/profile.jpg","Ignacy Michalski","2022.02.10",null,"Na ulicy bitowej niedługo powstanie nowe osiedle, mieszkańcy podekscytowani. Miejsca będzie dla około 2 tyś. ludzi."];
+var post4 = [1,"styles/profile.jpg","Ignacy Michalski","2022.02.9",null,"UWAGA!!! Przy stadionie miejskim ktoś kradnie rowery! Sprawe bada policja."];
+var post5 = [1,"styles/profile.jpg","Ignacy Michalski","2022.02.8",null,"Nie polecam fastfoodów na starówce, BHP tam nie istnieje!!!"];
+var post6 = [1,"styles/profile.jpg","Ignacy Michalski","2022.02.7",null,"Właśnie otworzyłem nowy sklep wędkarski na ulicy Spokojnej. Zapraszam!"];
 
 //crate post
 function createPost()
@@ -36,4 +39,8 @@ function createPost()
 
 postsTxt += createPost(post1);
 postsTxt += createPost(post2);
+postsTxt += createPost(post3);
+postsTxt += createPost(post4);
+postsTxt += createPost(post5);
+postsTxt += createPost(post6);
 document.getElementById("feed").innerHTML = postsTxt;
