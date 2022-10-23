@@ -1,6 +1,6 @@
 const fs = require("fs")
 
-fs.mkdir(__dirname + "/posts")
+fs.mkdir(__dirname + "/posts", (err,res) =>{})
 
 function readdirSortTime(dir, timeKey = 'mtime') {
     return (
